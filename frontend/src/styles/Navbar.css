@@ -1,0 +1,38 @@
+.navbar {
+    background: black;
+    font-family: Calibri, sans-serif;
+    padding: 2px;
+}
+
+.navdiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo img {
+    width: 200px; /* Adjust size as needed */
+    height: 60px;
+    margin-top: 20px;
+    margin-left: 30px;
+}
+
+li {
+    list-style: none;
+    display: inline-block;
+}
+
+li a {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 60px;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out, text-decoration 0.3s ease-in-out;
+}
+
+/* Hover effect */
+li a:hover {
+    color: yellow;
+    text-decoration: underline;
+}
