@@ -1,0 +1,38 @@
+/* StaffCard.css */
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+    background-color: transparent;
+    position: relative;
+    text-align: center;
+    color: white;
+    margin: 20px; /* Adds space around each card */
+}
+
+.card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #ddd;
+    position: relative;
+    z-index: 2;
+}
+
+.container {
+    width: 100%;
+    background-color: #454545;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 250px;
+    position: relative;
+    top: -75px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
