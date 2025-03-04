@@ -1,110 +1,152 @@
-/* Signup Page Styles */
-/* Ensure parent container takes full height */
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden;
-}
+/* Signup.css */
 
 .Signup {
-    position: absolute; /* Ensure it stretches fully */
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    overflow: hidden;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  color: white;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
-/* Prevent the image from stretching */
-.Signup img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: fill; /* Change from contain to cover */
-    z-index: -1;
+/* Form Section */
+.Signup_Form_Section {
+  width: calc(100vw - 770px); /* Adjusted width to move image left */
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-  
-  .Signup_Form {
-    background: rgba(255, 255, 255, 0); /* Transparent black background */
-    padding: 60px;
-    border-radius: 20px;
-    width: 350px;
-    display: flex;
+/* Form Styling */
+.Signup_Form {
+  width: 350px;
+  height: 500px;
+  padding: 40px;
+  background: black;
+  border-radius: 20px;
+  border: 1px solid white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0px 0px 25px rgba(255, 255, 255, 0.5);
+  margin-left: 60px;
+}
+
+.Signup_Form h2 {
+  color: white;
+}
+
+.Signup_Form p {
+  color: #bbb;
+}
+
+.Signup_Form input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #555;
+  border-radius: 5px;
+  background: #333;
+  color: white;
+}
+
+.Signup_Form input::placeholder {
+  color: #aaa;
+}
+
+/* Sign Up Button (Red) */
+.Signup_Form button {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Specific Styling for Sign Up */
+.Signup_Form button:first-of-type {
+  background-color: #ff0000;
+  color: white;
+}
+
+.Signup_Form button:first-of-type:hover {
+  background-color: #cc0000;
+}
+
+/* Google Button (Blue) */
+.Google_Button {
+  background-color: #4285F4;
+  color: white;
+  border: 2px solid white;
+  padding: 12px;
+  font-size: 16px;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  transition: background 0.3s, border 0.3s;
+}
+
+.Google_Button:hover {
+  background-color: #357ae8;
+  border-color: #ddd;
+}
+
+/* Image on the right */
+.Signup_Image {
+  width: 500px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Signup_Image img {
+  width: 737px;
+  height: 100vh;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+  .Signup {
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    text-align: center;
-    box-shadow: 0px 0px 25px rgba(255, 255, 255, 0.5);
-    border: 1px solid white;
-    margin-left: 15%;
-    z-index: 1;
-    backdrop-filter: blur(10px); /* Blur effect for better readability */
   }
-  
-  .Signup_Form h2 {
-    color: white;
-  }
-  
-  .Signup_Form input {
+
+  .Signup_Form_Section {
     width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #555;
-    border-radius: 5px;
-    background: #333;
-    color: white;
+    height: auto;
+    padding: 20px;
   }
-  
-  .Signup_Form input::placeholder {
-    color: #aaa;
+
+  .Signup_Form {
+    width: 90%;
+    max-width: 453px;
+    height: auto;
   }
-  
-  .Signup_Form button {
+
+  .Signup_Image {
     width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
+    height: auto;
   }
-  
-  /* Specific Styling for Sign Up */
-  .Signup_Form button:first-of-type {
-    background-color: #ff0000;
-    color: white;
-  }
-  
-  .Signup_Form button:first-of-type:hover {
-    background-color: #cc0000;
-  }
-  
-  /* Google Button Styling */
-  .Google_Button {
-    background-color: #4285F4 !important;
-    color: white;
-    border: 2px solid white;
-    padding: 12px;
-    font-size: 16px;
+
+  .Signup_Image img {
     width: 100%;
-    cursor: pointer;
-    border-radius: 5px;
-    text-align: center;
-    transition: background 0.3s, border 0.3s;
+    height: auto;
   }
-  
-  .Google_Button:hover {
-    background-color: #666 !important;
-    border-color: #ddd !important;
-  }
-  .Signup_Form p {
-    color: #bbb; /* Light grey for description */
-  }
-  
+}
+
+.Logo {
+  width: 100%;
+  height: auto;
+  margin-bottom: 15px;
+}

@@ -3,6 +3,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../styles/SignUp.css";
 import SignUpImage from "../assets/signup-page-image.jpg";
+import logoImage from "../assets/Logo.png";
+
 
 
 const Signup = () => {
@@ -43,8 +45,9 @@ const Signup = () => {
   return (
 
     <div className="Signup">
-      <img src={SignUpImage} alt="signup_background" />
+      <div className="Signup_Form_Section">
       <div className="Signup_Form">
+        <img className="Logo" src={logoImage} alt="logo" />
         <h2>Create an Account</h2>
         <p>Get Healthier Today!</p>
         <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
@@ -53,6 +56,10 @@ const Signup = () => {
         <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
         <button onClick={handleSignup}>Sign Up</button>
         <button className="Google_Button">Sign up with Google</button>
+        </div>
+      </div>
+      <div className="Signup_Image">
+            <img src={SignUpImage} alt="SignUp" />
       </div>
     </div>
   );
