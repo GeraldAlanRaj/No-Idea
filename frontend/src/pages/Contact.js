@@ -1,9 +1,11 @@
 import Navbar from "../components/Navbar";
+import Email from "../components/Mailjs";
+
 const Contact = () => { 
   return (
     <div>
         <Navbar />
-      <h1>Contact</h1>
+        <Email />
     </div>
   );
 }

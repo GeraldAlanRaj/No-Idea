@@ -1,0 +1,84 @@
+/* Full screen container */
+.Email_Sender {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    background-color: #000; /* Black background */
+    color: white;
+  }
+  
+  /* Form container */
+  .Email_Form {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1000px;
+    background: black; /* Dark grey for contrast */
+    padding: 10px;
+    gap: 70px; /* Increased gap between left & right sections */
+  }
+  
+  /* Left section (Name & Email) */
+  .Left_Section {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  
+  .Left_Section input {
+    width: 100%;
+    height: 40px; /* Increased height */
+    padding: 12px; /* Increased padding */
+    margin-bottom: 35px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    background: #171717; /* Darker background */
+    color: white;
+    font-size: 18px; /* Increased font size */
+  }
+  
+  /* Right section (Message) */
+  .Right_Section {
+    flex: 1;
+  }
+  
+  .Right_Section textarea {
+    width: 100%;
+    height: 142px;
+    padding: 12px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    background: #171717;
+    color: white;
+    font-size: 16px;
+    resize: none;
+  }
+  
+  /* Footer section */
+  .Form_Footer {
+    width: 70%; /* Match form width */
+    max-width: 800px;
+    text-align: center;
+  }
+  
+  /* Send button */
+  .Form_Footer button {
+    width: 20%; /* Full width for visibility */
+    padding: 15px;
+    border: none;
+    background: #454545;
+    color: white;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 20px;
+  }
+  
+  .Form_Footer button:hover {
+    background: #dddada;
+    color : black
+  }
+  
