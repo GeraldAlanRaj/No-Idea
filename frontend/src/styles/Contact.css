@@ -1,0 +1,78 @@
+.Contact-Container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+    background-color: black;
+    color: white;
+}
+
+.Navbar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: black;
+    z-index: 1000;
+}
+
+.Contact-Body {
+    margin-top: 2px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.Header {
+    text-align: center;
+    padding: 10px;
+    background-color: black;
+}
+
+.Header h1 {
+    font-size: 3.5em;
+}
+
+.Header h2{
+    font-weight: 200;
+}
+
+.Middle {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 10px;
+    justify-items: center;
+    align-items: center;
+    background-color: black;
+    width: 70%;
+    margin-left: 265px;
+}
+
+.Middle h2{
+    font-weight: 400;
+}
+
+.Mail_Id, .Phone_No, .Location {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    background: black;
+    border-radius: 8px;
+    color: white;
+    font-weight: lighter; /* Reduced font weight */
+}
+
+.Middle img {
+    width: 65px;  /* Reduced image size */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 35px;
+    margin-top: 10px; ;
+}
+
+.Footer {
+    padding: 10px;
+    background-color: black;
+    text-align: center;
+}
