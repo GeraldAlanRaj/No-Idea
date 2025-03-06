@@ -7,6 +7,10 @@ body {
     font-family: Arial, sans-serif;
 }
 
+.About-Body::-webkit-scrollbar {
+    display: none;
+}
+
 .About-Container {
     display: flex;
     flex-direction: column;
