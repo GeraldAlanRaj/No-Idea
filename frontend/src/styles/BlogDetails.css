@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.blog-details::-webkit-scrollbar {
+    display: none;
+}
+
+.blog-detail-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Enable scrolling */
+.blog-details {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Allows it to take up remaining space */
+    overflow-y: auto; /* Enables scrolling */
+    margin-top: 15px;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+/* Title Section */
+.blog-title {
+    margin-top: 15px;
+    font-size: 2em;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 10%; /* Minimum height to always be visible */
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+/* Image Section */
+.blog-details-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    margin: 0 auto; /* Centers the div horizontally */
+    padding: 5px;
+    margin-bottom: 25px;
+}
+
+.blog-details-image img {
+    width: 100%;
+    max-width: 800px; /* Ensures it doesn’t exceed 800px */
+    height: auto;
+    max-height: 600px; /* Limits the height but allows resizing */
+    object-fit: contain; /* Prevents image distortion */
+    border-radius: 10px;
+}
+
+/* Content Section */
+.blog-content {
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-grow: 2; /* Allows content to take up remaining space */
+    width: 100%;
+    max-width: 200px;
+    margin: auto;
+    box-sizing: border-box;
+    word-wrap: break-word;
+}

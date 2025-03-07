@@ -10,18 +10,6 @@ exports.getAllBlogs = async (req, res) => {
   }
 };
 
-// Create a new blog
-exports.createBlog = async (req, res) => {
-  try {
-    const { title, description, content, imageUrl } = req.body;
-    const newBlog = new Blog({ title, description, content, imageUrl });
-    await newBlog.save();
-    res.status(201).json(newBlog);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-};
-
 // Like a blog
 exports.likeBlog = async (req, res) => {
   try {
@@ -31,6 +19,19 @@ exports.likeBlog = async (req, res) => {
     blog.likes += 1;
     await blog.save();
     
+    res.json(blog);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+
+// Get a single blog by ID
+exports.getBlogById = async (req, res) => {
+  try {
+    const blog = await Blog.findById(req.params.id);
+    if (!blog) return res.status(404).json({ error: "Blog not found" });
+
     res.json(blog);
   } catch (err) {
     res.status(500).json({ error: err.message });

@@ -18,20 +18,13 @@ body {
     overflow: hidden;
 }
 
-.Navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    background-color: black;
-}
 
 .About-Body {
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 60px); /* Adjusted for navbar height */
+    height: calc(100vh - 60px);
     overflow-y: auto;
+    margin-top: 15px;
 }
 
 /* About Content 1 */

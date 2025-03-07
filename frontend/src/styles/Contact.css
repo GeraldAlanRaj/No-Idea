@@ -7,20 +7,13 @@
     color: white;
 }
 
-.Navbar {
-    position: sticky;
-    top: 0;
-    width: 100%;
-    background-color: black;
-    z-index: 1000;
-}
-
 .Contact-Body {
     margin-top: 2px;
     flex: 1;
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    margin-top: 15px;
 }
 
 .Header {
