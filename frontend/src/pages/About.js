@@ -22,7 +22,10 @@ const About = () => {
         <div className="About-Body">
         <div className="About-Content-1">
         <div className="About-Text">
-            <h1>Get To Know About Us</h1>
+            <h1>
+            <span style={{ color: "white" }}>Get To Know</span>
+            <span style={{ color: "#454545" }}> About Us</span>
+            </h1>
             <br></br>
             <h2>Empowering you to reach your fitness goals with personalized training and expert support.</h2>
             <br></br>
@@ -35,7 +38,10 @@ const About = () => {
         </div>
         <div className="About-Content-2">
             <div className="About-Foot-Text">
-                <h1>Meet Our Team</h1>
+            <h1>
+            <span style={{ color: "white" }}>Meet</span>
+            <span style={{ color: "#454545" }}> Our Team</span>
+            </h1>
                 <h2>Meet our team of passionate fitness experts, each committed to helping you achieve your goals through personalized guidance, support, and motivation every step of the way.</h2>
             </div>
             <div className="Teammate Section">
