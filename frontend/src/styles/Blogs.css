@@ -1,0 +1,38 @@
+/* General Styling */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.Blogs::-webkit-scrollbar {
+    display: none;
+}
+
+.Blogs-Container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+.Blogs {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+    margin-top: 5px;
+}
+  
+  .Title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 2em;
+  }
+  
+  

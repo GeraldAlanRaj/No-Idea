@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import SearchBar from "../components/SearchBar";
 import BlogList from "../components/BlogList";
+import "../styles/Blogs.css";
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
@@ -33,8 +34,17 @@ const Blogs = () => {
   return (
     <div className="Blogs-Container">
       <Navbar />
+      <div className="Blogs">
+      <div className="Title">
+      <h1>Blogs & Articles</h1>
+      </div>
+      <div className="Search-Bar">
       <SearchBar search={search} setSearch={setSearch} />
+      </div>
+      <div className="Blog-List">
       <BlogList blogs={filteredBlogs} onReadMore={(blog) => navigate(`/blogs/${blog._id}`)} onLike={handleLike} />
+      </div>
+      </div>
     </div>
   );
 };

@@ -1,0 +1,36 @@
+.search-bar {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin-bottom: 30px;
+    padding-left: 70px;
+    gap: 0px; /* Ensures no space between elements */
+}
+
+.search-bar input {
+    width: 70%; /* Adjusted width */
+    padding: 15px;
+    font-size: 18px;
+    border-radius: 8px 0 0 8px; /* Rounded corners only on the left */
+    border: 1px solid #ccc;
+    border-right: none; /* Removes right border to merge with button */
+}
+
+.search-btn {
+    background: #454545;
+    border: 0.1px solid #ccc;
+    border-left: none; /* Ensures no border between input and button */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 13.5px; /* Match input padding */
+    border-radius: 0 8px 8px 0; /* Rounded corners only on the right */
+}
+
+.search-btn img {
+    width: 25px; 
+    height: 25px;
+}

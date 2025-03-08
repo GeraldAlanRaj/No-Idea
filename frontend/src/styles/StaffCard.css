@@ -8,7 +8,8 @@
     position: relative;
     text-align: center;
     color: white;
-    margin: 20px; /* Adds space around each card */
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .card img {
