@@ -24,7 +24,6 @@ body {
     flex-direction: column;
     height: calc(100vh - 60px);
     overflow-y: auto;
-    margin-top: 5px;
 }
   
   .Title {

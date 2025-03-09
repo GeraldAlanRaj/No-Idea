@@ -58,18 +58,20 @@ li a:hover {
     position: fixed;
     top: 0;
     right: 0;
-    width: 300px;
+    width: 370px;
     height: 100vh;
-    background: white;
-    box-shadow: -2px 0 5px rgba(0,0,0,0.3);
+    background-color: #111;
+    box-shadow: 0px 0px 25px rgba(169, 150, 150, 0.5);
     padding: 20px;
     transition: transform 0.3s ease-in-out;
+    z-index: 1000; /* Ensure it's on top */
 }
 
 .close-btn {
-    background: red;
+    background: rgb(65, 63, 63);
     color: white;
     border: none;
     padding: 5px 10px;
     cursor: pointer;
+    border-radius: 35px;
 }

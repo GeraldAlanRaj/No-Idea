@@ -18,14 +18,14 @@ const BlogCard = ({ blog, onLike }) => {
 
   return (
     <div className="blog-card" onClick={handleCardClick} style={{ cursor: "pointer" }}>
-      <h3>{blog.title}</h3>
+      <h3 className="blog-title">{blog.title}</h3>
       <img
         src={`http://localhost:5001/uploads/${blog.imageUrl}`}
         alt={blog.title}
         className="blog-image"
       />
-      <p>{blog.description}</p>
-      <p>Likes: {blog.likes}</p>
+      <p className="blog-description">{blog.description}</p>
+      <p className="blog-likes">Likes : {blog.likes}</p>
 
       {/* Like Button */}
       <div className="like-content">
@@ -34,7 +34,7 @@ const BlogCard = ({ blog, onLike }) => {
           onClick={handleLike}
           disabled={liked}
         >
-          <i className="fa fa-heart" aria-hidden="true"></i> {liked ? "You liked this" : "Like"}
+          <i className="fa fa-heart" aria-hidden="true"></i> {liked ? "You have already liked this" : "Like"}
         </button>
       </div>
     </div>
