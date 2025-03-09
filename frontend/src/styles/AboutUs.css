@@ -101,7 +101,8 @@ body {
 }
 
 .About-Foot-Text h1 {
-    text-align: center;
+    margin-left: 105px;
+    margin-right: 50px;
     margin-bottom: 50px;
     font-size: 3em;
 }

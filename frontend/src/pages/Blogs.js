@@ -36,7 +36,11 @@ const Blogs = () => {
       <Navbar />
       <div className="Blogs">
       <div className="Title">
-      <h1>Blogs & Articles</h1>
+      <h1>
+            <span style={{ color: "#454545" }}>Blogs</span>
+            <span style={{ color: "white" }}> & </span>
+            <span style={{ color: "#454545" }}>Articles</span>
+      </h1>
       </div>
       <div className="Search-Bar">
       <SearchBar search={search} setSearch={setSearch} />
