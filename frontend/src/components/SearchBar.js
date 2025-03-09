@@ -1,6 +1,8 @@
 import "../styles/SearchBar.css";
 import searchIcon from "../assets/search-icon.png";
 
+//Optimize the Search Bar to Handle Large Dataset
+
 const SearchBar = ({ search, setSearch, handleSearch }) => {
   return (
     <div className="search-bar">

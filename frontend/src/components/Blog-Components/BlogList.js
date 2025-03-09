@@ -1,4 +1,4 @@
-import '../styles/BlogList.css';
+import '../../styles/BlogList.css';
 import BlogCard from "./BlogCard";
 
 const BlogList = ({ blogs, onReadMore, onLike }) => {

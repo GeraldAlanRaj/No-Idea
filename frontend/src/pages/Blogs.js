@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import SearchBar from "../components/SearchBar";
-import BlogList from "../components/BlogList";
+import BlogList from "../components/Blog-Components/BlogList";
 import "../styles/Blogs.css";
 
 const Blogs = () => {

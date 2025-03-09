@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Navbar from "./Navbar";
-import "../styles/BlogDetails.css";
+import Navbar from "../Navbar";
+import "../../styles/BlogDetails.css";
 
 const BlogDetails = () => {
   const { id } = useParams();

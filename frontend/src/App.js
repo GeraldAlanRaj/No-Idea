@@ -8,15 +8,14 @@ import Contact from "./pages/Contact";
 import Blogs from "./pages/Blogs";
 import Recipes from "./pages/Recipes";
 import NoPage from "./pages/NoPage";
-import Profile from "./pages/Profile";
-import BlogDetails from "./components/BlogDetails";
-import PrivateRoute from "./components/PrivateRoute"; // Import PrivateRoute
+import BlogDetails from "./components/Blog-Components/BlogDetails";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
     <Router>
       <Routes>
-      <Route path="/" element={<Login />} />
+        <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
 
@@ -28,7 +27,6 @@ function App() {
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blogs/:id" element={<BlogDetails />} />
           <Route path="/recipes" element={<Recipes />} />
-          <Route path="/profile" element={<Profile />} />
         </Route>
 
         {/* Catch-all for non-existent routes */}

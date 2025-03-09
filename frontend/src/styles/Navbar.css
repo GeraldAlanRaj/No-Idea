@@ -37,3 +37,39 @@ li a:hover {
     color: yellow;
     text-decoration: underline;
 }
+
+
+.profile-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 60px;
+}
+
+.profile-button:hover {
+    color: yellow;
+    text-decoration: underline;
+}
+
+.profile-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100vh;
+    background: white;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.3);
+    padding: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.close-btn {
+    background: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
