@@ -67,13 +67,11 @@ body {
 .blog-content {
     font-size: 0.9rem;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
     flex-grow: 2; /* Allows content to take up remaining space */
     width: 100%;
-    max-width: 200px;
+    max-width: 1250px;
     margin: auto;
     box-sizing: border-box;
     word-wrap: break-word;
+    text-align: justify;
 }
