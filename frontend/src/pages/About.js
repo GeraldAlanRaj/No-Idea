@@ -2,9 +2,9 @@ import Navbar from "../components/Navbar";
 import aboutUsImage from "../assets/aboutus-page-image.jpg";
 import staff1 from "../assets/staff1.png";
 import staff2 from "../assets/staff2.png";
-import "../styles/AboutUs.css";
 import { useNavigate } from "react-router-dom";
 import StaffCard from "../components/StaffCard";
+import "../styles/pages/AboutUs.css"
 
 const About = () => {    
 

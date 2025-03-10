@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/Profile.css"
+import "../styles/pages/Profile.css"
 
 const Profile = ({ onClose }) => {
     
@@ -44,3 +44,37 @@ const Profile = ({ onClose }) => {
   
   export default Profile;
   
+
+
+  /*
+  To pass the details from the profile page to home page
+
+  import React, { createContext, useContext } from "react";
+
+// Create Context
+const MyContext = createContext();
+
+const Parent = ({ children }) => {
+  const value = "Hello from Parent!";
+  return (
+    <MyContext.Provider value={value}>
+      {children} {// No need to explicitly pass props }
+      </MyContext.Provider>
+    );
+  };
+  
+  const Child = () => {
+    const message = useContext(MyContext); // Receive the prop
+    return <div>{message}</div>;
+  };
+  
+  export default function App() {
+    return (
+      <Parent>
+        <Child />
+      </Parent>
+    );
+  }
+  
+
+  */

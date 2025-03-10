@@ -3,7 +3,7 @@ import Email from "../components/Mailjs";
 import mailImage from "../assets/Mail.png";
 import locationImage from '../assets/Location.png';
 import phoneImage from '../assets/Phone.png';
-import '../styles/Contact.css';
+import "../styles/pages/Contact.css"
 
 const Contact = () => { 
   return (

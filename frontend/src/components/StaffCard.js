@@ -1,5 +1,4 @@
-import "../styles/StaffCard.css";
-
+import "../styles/components/StaffCard.css"
 const StaffCard = (props) => {
 
     return(

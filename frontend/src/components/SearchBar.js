@@ -1,5 +1,5 @@
-import "../styles/SearchBar.css";
 import searchIcon from "../assets/search-icon.png";
+import "../styles/components/SearchBar.css"
 
 //Optimize the Search Bar to Handle Large Dataset
 

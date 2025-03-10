@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
-import "../styles/Mailjs.css";
+import "../styles/components/Mailjs.css"
 
 const MailForm = () => {
   const [formData, setFormData] = useState({

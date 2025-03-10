@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Outlet, Link } from "react-router-dom";
-import "../styles/Navbar.css";
 import logoImage from "../assets/Logo.png";
 import Profile from "../pages/Profile";
+import "../styles/components/Navbar.css"
 
 const Navbar = () => {
   const [showProfile, setShowProfile] = useState(false);

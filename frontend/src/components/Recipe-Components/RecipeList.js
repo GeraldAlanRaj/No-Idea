@@ -1,4 +1,4 @@
-import "../../styles/components/Blog-Components/BlogList.css"
+import "../../styles/components/Recipe-Components/RecipeList.css"
 import BlogCard from "./BlogCard";
 
 const BlogList = ({ blogs, onReadMore, onLike }) => {

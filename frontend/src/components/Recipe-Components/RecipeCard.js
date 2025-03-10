@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import "../../styles/components/Blog-Components/BlogCard.css"
+import "../../styles/components/Recipe-Components/RecipeCard.css"
 
 const BlogCard = ({ blog, onLike }) => {
   const navigate = useNavigate();
