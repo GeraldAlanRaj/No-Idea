@@ -9,6 +9,7 @@ import Blogs from "./pages/Blogs";
 import Recipes from "./pages/Recipes";
 import NoPage from "./pages/NoPage";
 import BlogDetails from "./components/Blog-Components/BlogDetails";
+import RecipeDetails from "./components/Recipe-Components/RecipeDetails";
 import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blogs/:id" element={<BlogDetails />} />
           <Route path="/recipes" element={<Recipes />} />
+          <Route path="/recipes/:id" element={<RecipeDetails />} />
         </Route>
 
         {/* Catch-all for non-existent routes */}

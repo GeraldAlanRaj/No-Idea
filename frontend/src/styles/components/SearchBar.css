@@ -1,10 +1,10 @@
 .search-bar {
-    margin-top: 15px;
+    margin-top: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 90%;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     padding-left: 70px;
     gap: 0px; /* Ensures no space between elements */
 }

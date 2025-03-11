@@ -2,30 +2,30 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "../../styles/components/Recipe-Components/RecipeCard.css"
 
-const BlogCard = ({ blog, onLike }) => {
+const RecipeCard = ({ recipe, onLike }) => {
   const navigate = useNavigate();
   const [liked, setLiked] = useState(false);
 
   const handleCardClick = () => {
-    navigate(`/blogs/${blog._id}`);
+    navigate(`/recipes/${recipe._id}`);
   };
 
   const handleLike = (e) => {
     e.stopPropagation();
     setLiked(true);
-    onLike(blog._id);
+    onLike(recipe._id);
   };
 
   return (
-    <div className="blog-card" onClick={handleCardClick} style={{ cursor: "pointer" }}>
-      <h3 className="blog-title">{blog.title}</h3>
+    <div className="recipe-card" onClick={handleCardClick} style={{ cursor: "pointer" }}>
+      <h3 className="recipe-title">{recipe.title}</h3>
       <img
-        src={`http://localhost:5001/uploads/${blog.imageUrl}`}
-        alt={blog.title}
-        className="blog-image"
+        src={`http://localhost:5001/uploads/${recipe.imageUrl}`}
+        alt={recipe.title}
+        className="recipe-image"
       />
-      <p className="blog-description">{blog.description}</p>
-      <p className="blog-likes">Likes : {blog.likes}</p>
+      <p className="recipe-description">{recipe.description}</p>
+      <p className="recipe-likes">Likes : {recipe.likes}</p>
 
       {/* Like Button */}
       <div className="like-content">
@@ -41,4 +41,4 @@ const BlogCard = ({ blog, onLike }) => {
   );
 };
 
-export default BlogCard;
+export default RecipeCard;

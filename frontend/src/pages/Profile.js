@@ -36,7 +36,7 @@ const Profile = ({ onClose }) => {
       <div className="profile-sidebar">
         <button className="close-btn" onClick={onClose}>X</button>
         <h2>User Profile</h2>
-        <p>{username}</p>
+        <p>Hi! {username}</p>
         <button onClick={handleLogout}>Logout</button>
       </div>
     );

@@ -65,6 +65,7 @@ li a:hover {
     padding: 20px;
     transition: transform 0.3s ease-in-out;
     z-index: 1000; /* Ensure it's on top */
+    border-radius: 40px 0px 0px 75px;
 }
 
 .close-btn {

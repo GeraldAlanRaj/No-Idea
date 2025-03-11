@@ -3,44 +3,44 @@ import { useParams } from "react-router-dom";
 import Navbar from "../Navbar";
 import "../../styles/components/Recipe-Components/RecipeDetails.css"
 
-const BlogDetails = () => {
+const RecipeDetails = () => {
   const { id } = useParams();
-  const [blog, setBlog] = useState(null);
+  const [recipe, setRecipe] = useState(null);
 
   useEffect(() => {
-    const fetchBlog = async () => {
+    const fetchRecipe = async () => {
       try {
-        const res = await fetch(`http://localhost:5001/api/blogs/${id}`);
+        const res = await fetch(`http://localhost:5001/api/recipes/${id}`);
         const data = await res.json();
-        setBlog(data);
+        setRecipe(data);
       } catch (error) {
-        console.error("Error fetching blog:", error);
+        console.error("Error fetching recipe:", error);
       }
     };
 
-    fetchBlog();
+    fetchRecipe();
   }, [id]);
 
-  if (!blog) return <p>Loading...</p>;
+  if (!recipe) return <p>Loading...</p>;
 
   return (
-    <div className="blog-detail-container">
+    <div className="recipe-detail-container">
     <div className="Navbar">
         <Navbar />
     </div>
-    <div className="blog-details">
-    <div className="blog-title">
-      <h2>{blog.title}</h2>
+    <div className="recipe-details">
+    <div className="recipe-title">
+      <h2>{recipe.title}</h2>
     </div>
-    <div className="blog-details-image">
-      <img src={`http://localhost:5001/uploads/${blog.imageUrl}`} alt={blog.title} className="blog-image" />
+    <div className="recipe-details-image">
+      <img src={`http://localhost:5001/uploads/${recipe.imageUrl}`} alt={recipe.title} className="recipe-image" />
     </div>
-    <div className="blog-content">
-      <pre>{blog.content}</pre>
+    <div className="recipe-content">
+      <pre>{recipe.content}</pre>
     </div>
       </div>
     </div>
   );
 };
 
-export default BlogDetails;
+export default RecipeDetails;

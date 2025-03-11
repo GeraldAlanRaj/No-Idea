@@ -1,14 +1,14 @@
 import "../../styles/components/Recipe-Components/RecipeList.css"
-import BlogCard from "./BlogCard";
+import RecipeCard from "./RecipeCard";
 
-const BlogList = ({ blogs, onReadMore, onLike }) => {
+const RecipeList = ({ recipes, onReadMore, onLike }) => {
   return (
-    <div className="blog-list">
-      {blogs.map((blog) => (
-        <BlogCard key={blog._id} blog={blog} onReadMore={onReadMore} onLike={onLike} />
+    <div className="recipe-list">
+      {recipes.map((recipe) => (
+        <RecipeCard key={recipe._id} recipe={recipe} onReadMore={onReadMore} onLike={onLike} />
       ))}
     </div>
   );
 };
 
-export default BlogList;
+export default RecipeList;

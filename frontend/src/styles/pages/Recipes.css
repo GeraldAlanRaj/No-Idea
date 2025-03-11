@@ -1,0 +1,38 @@
+/* General Styling */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.Recipes::-webkit-scrollbar {
+    display: none;
+}
+
+.Recipes-Container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+.Recipes {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+    padding-bottom: 40px;
+}
+  
+  .Title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 2em;
+  }
+  
+  

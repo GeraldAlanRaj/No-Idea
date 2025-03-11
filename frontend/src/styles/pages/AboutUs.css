@@ -24,7 +24,7 @@ body {
     flex-direction: column;
     height: calc(100vh - 60px);
     overflow-y: auto;
-    margin-top: 15px;
+    margin-top: 30px;
 }
 
 /* About Content 1 */
@@ -95,24 +95,25 @@ body {
     align-items: center;
     padding-left: 50px;
     padding-right: 50px;
-    padding-bottom: 0px;
-    padding-top: 0px;
-    margin-top: 70px;
+    padding-bottom: 0px; /* Reduced padding */
+    padding-top: 20px; /* Reduced padding */
+    margin-top: 60px; /* Reduced margin */
 }
 
 .About-Foot-Text h1 {
     margin-left: 105px;
     margin-right: 50px;
-    margin-bottom: 50px;
-    font-size: 3em;
+    margin-bottom: 30px; /* Reduced margin */
+    font-size: 2.5em; /* Slightly smaller font */
 }
 
 .About-Foot-Text h2 {
-    margin-bottom: 60px;
-    line-height: 1.8;
+    margin-bottom: 40px; /* Reduced margin */
+    line-height: 1.5; /* Adjusted for better fit */
     margin-left: 105px;
     margin-right: 50px;
 }
+
 
 .Teammate {
     display: grid;
