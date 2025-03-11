@@ -6,8 +6,8 @@ body {
     font-family: Arial, sans-serif;
 }
 
-.recipe-details::-webkit-scrollbar {
-    display: none;
+body::-webkit-scrollbar{
+    display : none;
 }
 
 .recipe-detail-container {
@@ -26,6 +26,10 @@ body {
     margin-top: 15px;
     margin-left: 80px;
     margin-right: 80px;
+}
+
+.recipe-details::-webkit-scrollbar {
+    display: none;
 }
 
 /* Title Section */
