@@ -79,3 +79,13 @@ body::-webkit-scrollbar{
     word-wrap: break-word;
     text-align: justify;
 }
+
+.recipe-content pre {
+    font-weight: bold;
+    font-size: 1rem;
+    white-space: pre-wrap; /* Allows wrapping */
+    word-break: break-word; /* Breaks long words */
+    overflow-wrap: break-word; /* Ensures wrapping */
+    line-height: 30px;
+}
+

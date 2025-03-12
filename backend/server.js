@@ -13,7 +13,6 @@ app.use(express.json());
 app.use(cors());
 app.use("/uploads", express.static("public/uploads"));
 
-// Connect to Database
 connectDB();
 
 // Routes
@@ -22,7 +21,6 @@ app.use("/api/blogs", blogRoutes);
 app.use("/api/recipes", recipeRoutes);
 
 
-// Start Server
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
