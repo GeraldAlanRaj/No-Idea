@@ -3,7 +3,7 @@ const StaffCard = (props) => {
 
     return(
         <div className="card">
-        <img src={props.image} alt="Avatar"/>
+        <img src={props.image} alt="Avatar" className="staff-image"/>
          <div class="container">
          <h2><b>Name Here</b></h2> 
             <p><i>About the mentor</i></p> 
