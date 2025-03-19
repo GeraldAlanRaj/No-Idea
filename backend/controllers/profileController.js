@@ -1,0 +1,34 @@
+const User = require("../models/User");
+
+// Update user details using ID from request params
+exports.updateUser = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { age, height, weight, gender, activity } = req.body;
+  
+      if (!age && !height && !weight && !gender && !activity) {
+        return res.status(400).json({ message: "At least one field must be updated" });
+      }
+  
+      // Find user by ID first
+      const user = await User.findById(id);
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+  
+      // Update only the provided fields
+      if (age !== undefined) user.age = age;
+      if (height !== undefined) user.height = height;
+      if (weight !== undefined) user.weight = weight;
+      if (gender !== undefined) user.gender = gender;
+      if (activity !== undefined) user.activity = activity;
+  
+      // Save to trigger `__v` increment
+      const updatedUser = await user.save();
+  
+      res.status(200).json({ message: "User updated successfully", user: updatedUser });
+    } catch (error) {
+      res.status(500).json({ message: "Error updating user", error: error.message });
+    }
+  };
+  

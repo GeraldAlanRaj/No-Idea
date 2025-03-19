@@ -5,6 +5,11 @@ const UserSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   phone: { type: String, required: true },
   password: { type: String, required: true },
-});
+  age: { type: Number, default: null },
+  height: { type: Number, default: null}, 
+  weight: { type: Number, default: null }, 
+  gender: { type: String, default: null }, 
+  activity: { type: String, default: null }, 
+}, { versionKey: false });
 
 module.exports = mongoose.model("User", UserSchema);
