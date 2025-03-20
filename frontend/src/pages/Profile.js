@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../styles/pages/Profile.css";
@@ -11,21 +11,40 @@ const Profile = ({ onClose }) => {
   const [gender, setGender] = useState("");
   const [activity, setActivity] = useState("");
 
-  //Decode the userId and userName from the JWT Token
   const username = jwtDecoder.getUsernameFromToken();
   const userId = jwtDecoder.getUserIdFromToken();
 
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const res = await axios.get(`http://localhost:5001/api/profile/${userId}`);
+        if (res.status === 200) {
+          const userProfile = res.data;
+          setAge(userProfile.age || "");
+          setHeight(userProfile.height || "");
+          setWeight(userProfile.weight || "");
+          setGender(userProfile.gender || "");
+          setActivity(userProfile.activity || "");
+        }
+      } catch (error) {
+        console.error("Error fetching user profile:", error);
+      }
+    };
+
+    fetchProfile();
+  }, [userId]);
+
   const handleUpdate = async () => {
-    if (!userId) {
-      alert("User ID not found. Please log in again.");
+    if (!age || !height || !weight || !gender || !activity) {
+      alert("Please fill out all fields before updating.");
       return;
     }
 
     try {
-      const res = await axios.put(`http://localhost:5001/api/users/update/${userId}`, {
-        age: Number(age) || 0, // Convert safely
-        height: Number(height) || 0,
-        weight: Number(weight) || 0,
+      const res = await axios.put(`http://localhost:5001/api/profile/update/${userId}`, {
+        age: Number(age),
+        height: Number(height),
+        weight: Number(weight),
         gender,
         activity,
       });
@@ -42,9 +61,6 @@ const Profile = ({ onClose }) => {
     }
   };
 
-  const handle_radio = (e) => setGender(e.target.value);
-  const handle_selectbox = (e) => setActivity(e.target.value);
-
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -59,34 +75,66 @@ const Profile = ({ onClose }) => {
       <p>Hi! {username}</p>
 
       <div className="User-Details">
-        <input type="number" placeholder="Enter Age" value={age} onChange={(e) => setAge(e.target.value)} />
-        <input type="number" placeholder="Enter Height" value={height} onChange={(e) => setHeight(e.target.value)} />
-        <input type="number" placeholder="Enter Weight" value={weight} onChange={(e) => setWeight(e.target.value)} />
-
-        <div>
+        <div className="Age">
+        <label>Age :
+        <input 
+          type="number" 
+          placeholder={age ? age : "Enter Age"} 
+          value={age} 
+          onChange={(e) => setAge(e.target.value)} 
+          min="1"
+        />
+        </label>
+        </div>
+        <div className="Height">
+        <label>Height :
+        <input 
+          type="number" 
+          placeholder={height ? height : "Enter Height (cm)"} 
+          value={height} 
+          onChange={(e) => setHeight(e.target.value)} 
+          min="1"
+        />
+        </label>
+        </div>
+        <div className="Weight">
+        <label>Weight :
+        <input 
+          type="number" 
+          placeholder={weight ? weight : "Enter Weight (kg)"} 
+          value={weight} 
+          onChange={(e) => setWeight(e.target.value)} 
+          min="1"
+        />
+        </label>
+        </div>
+        <div className="Gender">
+          <label>Gender :
           <label>
-            <input type="radio" value="Male" checked={gender === "Male"} onChange={handle_radio} />
+            <input type="radio" value="Male" checked={gender === "Male"} onChange={(e) => setGender(e.target.value)} />
             Male
           </label>
           <label>
-            <input type="radio" value="Female" checked={gender === "Female"} onChange={handle_radio} />
+            <input type="radio" value="Female" checked={gender === "Female"} onChange={(e) => setGender(e.target.value)} />
             Female
           </label>
+          </label>
         </div>
-
-        <div>
-          <select value={activity} onChange={handle_selectbox}>
+        <div className="Acitivity-Level">
+          <label>Activity Level :
+          <select value={activity} onChange={(e) => setActivity(e.target.value)}>
             <option value="">Select Activity Level</option>
             <option value="Low">Low</option>
             <option value="Medium">Medium</option>
             <option value="High">High</option>
           </select>
+          </label>
         </div>
 
-        <button onClick={handleUpdate}>Update Details</button>
+        <button className="Update-button" onClick={handleUpdate}>Update Details</button>
       </div>
 
-      <button onClick={handleLogout}>Logout</button>
+      <button className="Logout-button" onClick={handleLogout}>Logout</button>
     </div>
   );
 };

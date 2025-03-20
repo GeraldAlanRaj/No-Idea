@@ -32,3 +32,17 @@ exports.updateUser = async (req, res) => {
     }
   };
   
+  exports.getDetails = async (req, res) => {
+    try {
+        const { id } = req.params; // Ensure it matches the route parameter
+        const user = await User.findById(id); // Fetch user details based on ID
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        res.json(user);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+};

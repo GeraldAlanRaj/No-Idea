@@ -1,0 +1,96 @@
+.profile-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100vh;
+    background-color: #f9f9f9;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
+  }
+  
+  p {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #bbb;
+  }
+  
+  .User-Details {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  label {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  input, select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #333;
+    color: #bbb;
+  }
+  
+  .Gender {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .Gender label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .Update-button, .Logout-button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .Update-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .Logout-button {
+    background-color: #dc3545;
+  }
+  
+  .Logout-button:hover {
+    background-color: #b52b3a;
+  }
+  
