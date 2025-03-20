@@ -10,6 +10,7 @@ const UserSchema = new mongoose.Schema({
   weight: { type: Number, default: null }, 
   gender: { type: String, default: null }, 
   activity: { type: String, default: null }, 
+  goal : { type: String, default: null },
 }, { versionKey: false });
 
 module.exports = mongoose.model("User", UserSchema);

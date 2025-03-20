@@ -4,9 +4,9 @@ const User = require("../models/User");
 exports.updateUser = async (req, res) => {
     try {
       const { id } = req.params;
-      const { age, height, weight, gender, activity } = req.body;
+      const { age, height, weight, gender, activity, goal } = req.body;
   
-      if (!age && !height && !weight && !gender && !activity) {
+      if (!age && !height && !weight && !gender && !activity && !goal) {
         return res.status(400).json({ message: "At least one field must be updated" });
       }
   
@@ -22,6 +22,7 @@ exports.updateUser = async (req, res) => {
       if (weight !== undefined) user.weight = weight;
       if (gender !== undefined) user.gender = gender;
       if (activity !== undefined) user.activity = activity;
+      if (goal !== undefined) user.goal = goal;
   
       // Save to trigger `__v` increment
       const updatedUser = await user.save();
