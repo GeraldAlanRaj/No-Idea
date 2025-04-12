@@ -19,6 +19,7 @@
 }
 
 .search-btn {
+    margin-top: 10px;
     background: #454545;
     border: 0.1px solid #ccc;
     border-left: none; /* Ensures no border between input and button */

@@ -1,12 +1,16 @@
 import React from "react";
 import Navbar from "../components/Navbar";
+import CalorieMacroCalculator from "../components/Calorie-Macro_Calculator";
+import jwtDecoder from "../components/JWT_Decoder";
 
 const Home = () => {
+
+  const userId = jwtDecoder.getUserIdFromToken();
 
   return (
     <div>
       <Navbar />
-      <h1>Home</h1>
+      <CalorieMacroCalculator userId= {userId} />
     </div>
   );
 };

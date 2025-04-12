@@ -1,5 +1,6 @@
 h2 {
-    margin-bottom: 20px;
+    margin-top: 12px;
+    margin-bottom: 5px;
     font-size: 22px;
     text-align: center;
   }
@@ -19,14 +20,28 @@ h2 {
   }
   
   label {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: bold;
+    margin: 4px;
   }
+
+  input {
+    width: calc(100% - 2px); /* Adjusting for padding and border */
+    padding: 8px;
+    margin-top: 10px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #333;
+    color: #bbb;
+    box-sizing: border-box; /* Ensures padding and border are included in width */
+}
+
   
-  input, select {
+  select {
     width: 100%;
     padding: 8px;
-    margin-top: 5px;
+    margin-top: 10px;
     border: 1px solid #555;
     border-radius: 5px;
     font-size: 14px;
@@ -37,37 +52,58 @@ h2 {
   .Gender {
     display: flex;
     flex-direction: column;
-  }
-  
-  .Gender label {
+    margin-top: 5px;
+    margin-bottom: 2px;
+}
+
+.Gender label {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 8px; /* Adjust spacing between radio button and label */
     font-size: 14px;
     font-weight: bold;
-  }
+}
+
+.Gender input[type="radio"] {
+    margin: 0; /* Remove default margin */
+    transform: scale(1.1); /* Slightly increase radio button size for better visibility */
+    vertical-align: middle; /* Align properly with label text */
+}
+
   
-  .Update-button, .Logout-button {
+  .Update-button {
     width: 100%;
     padding: 10px;
     margin-top: 15px;
-    background-color: #007bff;
-    color: white;
+    background-color: #dddada;
+    color: black;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: 0.3s;
   }
   
   .Update-button:hover {
-    background-color: #0056b3;
+    background-color: rgb(64, 63, 63);
+    color: white;
   }
   
   .Logout-button {
+    margin-top: 25px;
     background-color: #dc3545;
-  }
-  
-  .Logout-button:hover {
-    background-color: #b52b3a;
-  }
+    border-radius: 20px;
+    width: 25%;
+    padding: 10px;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.Logout-button:hover {
+    background-color: #a71d2a; /* Darker red for a sleek hover effect */
+    transform: scale(1.05); /* Slightly increase button size on hover */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow effect */
+}
