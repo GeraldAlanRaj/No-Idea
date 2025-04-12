@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Outlet, Link } from "react-router-dom";
 import logoImage from "../assets/Logo.png";
 import Profile from "../pages/Profile";
-import "../styles/components/Navbar.css"
+import "../styles/components/Navbar.css";
 
-const Navbar = () => {
+const Navbar = ({ triggerNutritionRefresh }) => {
   const [showProfile, setShowProfile] = useState(false);
 
   const toggleProfile = () => {
@@ -24,11 +24,18 @@ const Navbar = () => {
             <li><Link to="/contact">Contact Us</Link></li>
             <li><Link to="/blogs">Blogs</Link></li>
             <li><Link to="/recipes">Recipes</Link></li>
-            <li><button className="profile-button" onClick={toggleProfile}>Profile</button></li>
+            <li>
+              <button className="profile-button" onClick={toggleProfile}>Profile</button>
+            </li>
           </ul>
         </div>
       </div>
-      {showProfile && <Profile onClose={toggleProfile} />} {/* Display Profile when showProfile is true */}
+      {showProfile && (
+        <Profile 
+          onClose={toggleProfile} 
+          triggerNutritionRefresh={triggerNutritionRefresh} 
+        />
+      )}
       <Outlet />
     </div>
   );

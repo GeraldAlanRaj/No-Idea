@@ -3,7 +3,7 @@ import axios from "axios";
 import jwtDecoder from "../components/JWT_Decoder";
 import "../styles/components/User_Details.css";
 
-const Details = () => {
+const Details = ({ onProfileUpdate }) => {  // <-- ✅ Accept the callback as a prop
   const [age, setAge] = useState("");
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
@@ -54,6 +54,11 @@ const Details = () => {
       if (res.status === 200) {
         alert("Profile updated successfully");
         console.log("Updated User Data:", res.data);
+
+        if (onProfileUpdate) {            // ✅ Trigger Home to refresh nutrition info
+          onProfileUpdate();
+        }
+
       } else {
         alert("Failed to update profile");
       }
@@ -63,11 +68,11 @@ const Details = () => {
     }
   };
 
-  return(
+  return (
     <div className="User-Details">
-        <h2>User Profile</h2>
-        <p>Hi! {username}</p>
-        <div className="Age">
+      <h2>User Profile</h2>
+      <p>Hi! {username}</p>
+      <div className="Age">
         <label>Age :
         <input 
           type="number" 
@@ -142,11 +147,12 @@ const Details = () => {
           </select>
           </label>
         </div>
-
-        <button className="Update-button" onClick={handleUpdate}>Update Details</button>
-      </div>
+      
+      <button className="Update-button" onClick={handleUpdate}>Update Details</button>
+    </div>
   );
-
-}
+};
 
 export default Details;
+
+  

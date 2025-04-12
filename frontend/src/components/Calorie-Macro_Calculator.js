@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const CalorieMacroCalculator = ({ userId }) => {
+const CalorieMacroCalculator = ({ userId, refreshTrigger }) => {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -18,7 +18,7 @@ const CalorieMacroCalculator = ({ userId }) => {
     }
 
     fetchData();
-  }, [userId]);
+  }, [userId, refreshTrigger]); // Refresh when refreshTrigger changes
 
   if (loading) return <p>Loading nutrition info...</p>;
   if (!userData) return <p>No user data available.</p>;

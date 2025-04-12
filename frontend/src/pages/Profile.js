@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/pages/Profile.css";
 import Details from "../components/User_Details";
 
-const Profile = ({ onClose }) => {
+const Profile = ({ onClose, triggerNutritionRefresh }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -13,7 +13,7 @@ const Profile = ({ onClose }) => {
   return (
     <div className="profile-sidebar">
       <button className="close-btn" onClick={onClose}>X</button>
-      <Details />
+      <Details onProfileUpdate={triggerNutritionRefresh} /> {/* ✅ Pass the prop */}
       <button className="Logout-button" onClick={handleLogout}>Logout</button>
     </div>
   );
