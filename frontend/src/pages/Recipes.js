@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import SearchBar from "../components/SearchBar";
 import Navbar from "../components/Navbar";
 import RecipeList from "../components/Recipe-Components/RecipeList";
@@ -11,21 +12,29 @@ const Recipes = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5001/api/recipes")
-      .then((res) => res.json())
-      .then((data) => setRecipes(data))
-      .catch((error) => console.error("Error fetching recipes:", error));
+    const fetchRecipes = async () => {
+      try {
+        const res = await axios.get("http://localhost:5001/api/recipes");
+        setRecipes(res.data);
+      } catch (error) {
+        console.error("Error fetching recipes:", error);
+      }
+    };
+  
+    fetchRecipes();
   }, []);
-
+  
   const handleLike = async (id) => {
     try {
-      const res = await fetch(`http://localhost:5001/api/recipes/${id}/like`, { method: "PUT" });
-      if (res.ok) {
-        const updatedRecipe = await res.json();
-        setRecipes((prevRecipes) => prevRecipes.map((recipe) => (recipe._id === id ? updatedRecipe : recipe)));
+      const res = await axios.put(`http://localhost:5001/api/recipes/${id}/like`);
+      if (res.status === 200) {
+        const updatedRecipe = res.data;
+        setRecipes((prevRecipes) =>
+          prevRecipes.map((recipe) => (recipe._id === id ? updatedRecipe : recipe))
+        );
       }
     } catch (error) {
-      console.error("Error liking the blog:", error);
+      console.error("Error liking the recipe:", error);
     }
   };
 

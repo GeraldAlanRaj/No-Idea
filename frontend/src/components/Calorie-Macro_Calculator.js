@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import instance from "../utils/axiosInterceptor";
 
 const CalorieMacroCalculator = ({ userId, refreshTrigger }) => {
   const [userData, setUserData] = useState(null);
@@ -8,7 +8,7 @@ const CalorieMacroCalculator = ({ userId, refreshTrigger }) => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await axios.get(`http://localhost:5001/api/profile/${userId}/details-with-calories`);
+        const res = await instance.get(`http://localhost:5001/api/profile/${userId}/details-with-calories`);
         setUserData(res.data);
       } catch (err) {
         console.error("Error fetching nutrition data:", err);

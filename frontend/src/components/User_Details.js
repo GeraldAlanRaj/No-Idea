@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import instance from "../utils/axiosInterceptor";
 import jwtDecoder from "../components/JWT_Decoder";
 import "../styles/components/User_Details.css";
 
-const Details = ({ onProfileUpdate }) => {  // <-- ✅ Accept the callback as a prop
+const Details = ({ onProfileUpdate }) => {  
   const [age, setAge] = useState("");
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
@@ -17,7 +17,7 @@ const Details = ({ onProfileUpdate }) => {  // <-- ✅ Accept the callback as a 
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await axios.get(`http://localhost:5001/api/profile/${userId}`);
+        const res = await instance.get(`http://localhost:5001/api/profile/${userId}`);
         if (res.status === 200) {
           const userProfile = res.data;
           setAge(userProfile.age || "");
@@ -42,7 +42,7 @@ const Details = ({ onProfileUpdate }) => {  // <-- ✅ Accept the callback as a 
     }
 
     try {
-      const res = await axios.put(`http://localhost:5001/api/profile/update/${userId}`, {
+      const res = await instance.put(`http://localhost:5001/api/profile/update/${userId}`, {
         age: Number(age),
         height: Number(height),
         weight: Number(weight),
@@ -55,7 +55,7 @@ const Details = ({ onProfileUpdate }) => {  // <-- ✅ Accept the callback as a 
         alert("Profile updated successfully");
         console.log("Updated User Data:", res.data);
 
-        if (onProfileUpdate) {            // ✅ Trigger Home to refresh nutrition info
+        if (onProfileUpdate) {            //  Trigger Home to refresh nutrition info
           onProfileUpdate();
         }
 

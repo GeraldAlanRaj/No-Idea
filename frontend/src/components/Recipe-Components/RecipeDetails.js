@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../Navbar";
+import instance from "../../utils/axiosInterceptor";
 import "../../styles/components/Recipe-Components/RecipeDetails.css"
 
 const RecipeDetails = () => {
@@ -10,17 +11,16 @@ const RecipeDetails = () => {
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
-        const res = await fetch(`http://localhost:5001/api/recipes/${id}`);
-        const data = await res.json();
-        setRecipe(data);
+        const res = await instance.get(`http://localhost:5001/api/recipes/${id}`);
+        setRecipe(res.data);
       } catch (error) {
         console.error("Error fetching recipe:", error);
       }
     };
-
+  
     fetchRecipe();
   }, [id]);
-
+  
   if (!recipe) return <p>Loading...</p>;
 
   return (

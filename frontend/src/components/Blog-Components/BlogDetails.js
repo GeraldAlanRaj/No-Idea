@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../Navbar";
+import instance from "../../utils/axiosInterceptor";
 import "../../styles/components/Blog-Components/BlogDetails.css"
 
 const BlogDetails = () => {
@@ -10,14 +11,13 @@ const BlogDetails = () => {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const res = await fetch(`http://localhost:5001/api/blogs/${id}`);
-        const data = await res.json();
-        setBlog(data);
+        const res = await instance.get(`http://localhost:5001/api/blogs/${id}`);
+        setBlog(res.data);
       } catch (error) {
         console.error("Error fetching blog:", error);
       }
     };
-
+  
     fetchBlog();
   }, [id]);
 
