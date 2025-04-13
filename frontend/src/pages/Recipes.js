@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import instance from "../utils/axiosInterceptor";
 import SearchBar from "../components/SearchBar";
 import Navbar from "../components/Navbar";
 import RecipeList from "../components/Recipe-Components/RecipeList";
@@ -14,7 +14,7 @@ const Recipes = () => {
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
-        const res = await axios.get("http://localhost:5001/api/recipes");
+        const res = await instance.get("http://localhost:5001/api/recipes");
         setRecipes(res.data);
       } catch (error) {
         console.error("Error fetching recipes:", error);
@@ -26,7 +26,7 @@ const Recipes = () => {
   
   const handleLike = async (id) => {
     try {
-      const res = await axios.put(`http://localhost:5001/api/recipes/${id}/like`);
+      const res = await instance.put(`http://localhost:5001/api/recipes/${id}/like`);
       if (res.status === 200) {
         const updatedRecipe = res.data;
         setRecipes((prevRecipes) =>

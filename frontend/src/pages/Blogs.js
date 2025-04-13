@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import instance from "../utils/axiosInterceptor";
 import SearchBar from "../components/SearchBar";
 import Navbar from "../components/Navbar";
 import BlogList from "../components/Blog-Components/BlogList";
@@ -14,7 +14,7 @@ const Blogs = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const res = await axios.get("http://localhost:5001/api/blogs");
+        const res = await instance.get("http://localhost:5001/api/blogs");
         setBlogs(res.data);
       } catch (error) {
         console.error("Error fetching blogs:", error);
@@ -26,7 +26,7 @@ const Blogs = () => {
   
   const handleLike = async (id) => {
     try {
-      const res = await axios.put(`http://localhost:5001/api/blogs/${id}/like`);
+      const res = await instance.put(`http://localhost:5001/api/blogs/${id}/like`);
       if (res.status === 200) {
         const updatedBlog = res.data;
         setBlogs((prevBlogs) =>
