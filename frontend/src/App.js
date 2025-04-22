@@ -29,6 +29,7 @@ function App() {
           <Route path="/blogs/:id" element={<BlogDetails />} />
           <Route path="/recipes" element={<Recipes />} />
           <Route path="/recipes/:id" element={<RecipeDetails />} />
+          
         </Route>
 
         {/* Catch-all for non-existent routes */}

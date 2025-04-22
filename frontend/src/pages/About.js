@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import StaffCard from "../components/StaffCard";
 import "../styles/pages/AboutUs.css"
 
-const About = () => {    
+const About = (token) => {    
 
       const navigate = useNavigate();
       const handleSignup = async () => {

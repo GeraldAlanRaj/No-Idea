@@ -13,7 +13,7 @@ const Profile = ({ onClose, triggerNutritionRefresh }) => {
   return (
     <div className="profile-sidebar">
       <button className="close-btn" onClick={onClose}>X</button>
-      <Details onProfileUpdate={triggerNutritionRefresh} /> {/* ✅ Pass the prop */}
+      <Details onProfileUpdate={triggerNutritionRefresh} />
       <button className="Logout-button" onClick={handleLogout}>Logout</button>
     </div>
   );
