@@ -4,7 +4,7 @@ import instance from "../utils/axiosInterceptor";
 import SearchBar from "../components/SearchBar";
 import Navbar from "../components/Navbar";
 import BlogList from "../components/Blog-Components/BlogList";
-import "../styles/pages/Blogs.css"
+import "../styles/pages/Blogs.css";
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
@@ -12,18 +12,18 @@ const Blogs = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchBlogs = async () => {
+    const fetchTopBlogs = async () => {
       try {
         const res = await instance.get("http://localhost:5001/api/blogs");
         setBlogs(res.data);
       } catch (error) {
-        console.error("Error fetching blogs:", error);
+        console.error("Error fetching top blogs:", error);
       }
     };
-  
-    fetchBlogs();
+
+    fetchTopBlogs();
   }, []);
-  
+
   const handleLike = async (id) => {
     try {
       const res = await instance.put(`http://localhost:5001/api/blogs/${id}/like`);
@@ -38,25 +38,36 @@ const Blogs = () => {
     }
   };
 
-  const filteredBlogs = blogs.filter((blog) => blog.title.toLowerCase().includes(search.toLowerCase()));
+  const handleSearch = async () => {
+    try {
+      const res = await instance.get(`http://localhost:5001/api/blogs/search?q=${search}`);
+      setBlogs(res.data);
+    } catch (error) {
+      console.error("Error searching blogs:", error);
+    }
+  };
 
   return (
     <div className="Blogs-Container">
       <Navbar />
       <div className="Blogs">
-      <div className="Title">
-      <h1>
+        <div className="Title">
+          <h1>
             <span style={{ color: "#454545" }}>Blogs</span>
             <span style={{ color: "white" }}> & </span>
             <span style={{ color: "#454545" }}>Articles</span>
-      </h1>
-      </div>
-      <div className="Search-Bar">
-      <SearchBar search={search} setSearch={setSearch} />
-      </div>
-      <div className="Blog-List">
-      <BlogList blogs={filteredBlogs} onReadMore={(blog) => navigate(`/blogs/${blog._id}`)} onLike={handleLike} />
-      </div>
+          </h1>
+        </div>
+        <div className="Search-Bar">
+          <SearchBar search={search} setSearch={setSearch} handleSearch={handleSearch} />
+        </div>
+        <div className="Blog-List">
+          <BlogList
+            blogs={blogs}
+            onReadMore={(blog) => navigate(`/blogs/${blog._id}`)}
+            onLike={handleLike}
+          />
+        </div>
       </div>
     </div>
   );
