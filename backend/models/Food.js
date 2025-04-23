@@ -20,4 +20,4 @@ const foodSchema = new mongoose.Schema({
       fiber: Number,
     }
   });
-module.exports = mongoose.model('Food_Item', foodSchema);
+module.exports = mongoose.model('Food', foodSchema);

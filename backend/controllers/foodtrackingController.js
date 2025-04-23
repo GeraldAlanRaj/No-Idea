@@ -1,13 +1,16 @@
 const Food = require('../models/Food');
-const TrackedFood = require('../models/Track_Food');
+const TrackedFood = require('../models/TrackedFood');
 const dayjs = require('dayjs');
 
 //Add food to tracking
 exports.addFood = async (req, res) => {
+  try {
     const { userId, foodId, quantity, method, mealType } = req.body;
     const food = await Food.findById(foodId);
+    if (!food) return res.status(404).json({ error: 'Food not found' });
+
     const multiplier = method === 'serving' ? quantity : quantity / 100;
-  
+
     const entry = {
       userId,
       foodId,
@@ -21,10 +24,13 @@ exports.addFood = async (req, res) => {
       fat: food.per100g.fat * multiplier,
       fiber: food.per100g.fiber * multiplier,
     };
-  
+
     await TrackedFood.create(entry);
     res.json({ message: 'Tracked successfully' });
-  };
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
 
   
 // Get food history for a specific date
@@ -47,9 +53,16 @@ exports.getFoodHistory = async (req, res) => {
   
 //Calculate the total calories and macros for the day
 exports.calculateDailyTotals = async (req, res) => {
+  try {
+    const { userId } = req.query;
     const today = dayjs().format('YYYY-MM-DD');
-    const trackedFoods = await TrackedFood.find({ date: today }).populate('foodId');
-  
+
+    if (!userId) {
+      return res.status(400).json({ error: 'Missing userId in query' });
+    }
+
+    const trackedFoods = await TrackedFood.find({ userId, date: today }).populate('foodId');
+
     const total = trackedFoods.reduce((acc, tf) => {
       acc.calories += tf.calories;
       acc.protein += tf.protein;
@@ -58,6 +71,9 @@ exports.calculateDailyTotals = async (req, res) => {
       acc.fiber += tf.fiber;
       return acc;
     }, { calories: 0, protein: 0, carbs: 0, fat: 0, fiber: 0 });
-  
+
     res.json(total);
-  };
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
