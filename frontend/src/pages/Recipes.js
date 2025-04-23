@@ -4,7 +4,7 @@ import instance from "../utils/axiosInterceptor";
 import SearchBar from "../components/SearchBar";
 import Navbar from "../components/Navbar";
 import RecipeList from "../components/Recipe-Components/RecipeList";
-import "../styles/pages/Blogs.css"
+import "../styles/pages/Blogs.css";
 
 const Recipes = () => {
   const [recipes, setRecipes] = useState([]);
@@ -12,18 +12,18 @@ const Recipes = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchRecipes = async () => {
+    const fetchTopRecipes = async () => {
       try {
         const res = await instance.get("http://localhost:5001/api/recipes");
         setRecipes(res.data);
       } catch (error) {
-        console.error("Error fetching recipes:", error);
+        console.error("Error fetching top recipes:", error);
       }
     };
-  
-    fetchRecipes();
+
+    fetchTopRecipes();
   }, []);
-  
+
   const handleLike = async (id) => {
     try {
       const res = await instance.put(`http://localhost:5001/api/recipes/${id}/like`);
@@ -38,21 +38,34 @@ const Recipes = () => {
     }
   };
 
-  const filteredRecipes = recipes.filter((recipe) => recipe.title.toLowerCase().includes(search.toLowerCase()));
+  const handleSearch = async () => {
+    try {
+      const res = await instance.get(`http://localhost:5001/api/recipes?search=${search}`);
+      setRecipes(res.data);
+    } catch (error) {
+      console.error("Error searching recipes:", error);
+    }
+  };
 
   return (
     <div className="Recipes-Container">
       <Navbar />
       <div className="Recipes">
-      <div className="Title">
-      <h1> Recipes </h1>
-      </div>
-      <div className="Search-Bar">
-      <SearchBar search={search} setSearch={setSearch} />
-      </div>
-      <div className="Recipe-List">
-      <RecipeList recipes={filteredRecipes} onReadMore={(recipe) => navigate(`/recipes/${recipe._id}`)} onLike={handleLike} />
-      </div>
+        <div className="Title">
+          <h1>
+            <span style={{ color: "#454545" }}>Recipes</span>
+          </h1>
+        </div>
+        <div className="Search-Bar">
+          <SearchBar search={search} setSearch={setSearch} handleSearch={handleSearch} />
+        </div>
+        <div className="Recipe-List">
+          <RecipeList
+            recipes={recipes}
+            onReadMore={(recipe) => navigate(`/recipes/${recipe._id}`)}
+            onLike={handleLike}
+          />
+        </div>
       </div>
     </div>
   );

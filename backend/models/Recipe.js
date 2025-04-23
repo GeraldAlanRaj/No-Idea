@@ -5,6 +5,7 @@ const recipeSchema = new mongoose.Schema({
     description: String,
     content: String,
     likes: { type: Number, default: 0 },
+    likedRecipes: [{ type: mongoose.Schema.Types.ObjectId, ref: "Recipe" }],
     imageUrl: String,
   });
 
