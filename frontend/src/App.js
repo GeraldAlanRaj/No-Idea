@@ -11,6 +11,8 @@ import NoPage from "./pages/NoPage";
 import BlogDetails from "./components/Blog-Components/BlogDetails";
 import RecipeDetails from "./components/Recipe-Components/RecipeDetails";
 import PrivateRoute from "./components/PrivateRoute";
+import FoodTracking from "./pages/FoodTracking";
+import FoodDetail from "./components/food-tracking/foodDetails";
 
 function App() {
   return (
@@ -29,6 +31,9 @@ function App() {
           <Route path="/blogs/:id" element={<BlogDetails />} />
           <Route path="/recipes" element={<Recipes />} />
           <Route path="/recipes/:id" element={<RecipeDetails />} />
+          <Route path="/foodtracking" element={<FoodTracking />} />
+          <Route path="/food/:id" element={<FoodDetail />} />
+          
           
         </Route>
 

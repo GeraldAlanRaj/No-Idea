@@ -1,0 +1,8 @@
+.Add-Food-Button {
+    font-weight: bold;
+    border-radius: 150px;
+    height: 40px;
+    width: 40px;
+    font-size: x-large;
+    cursor: pointer;
+}
