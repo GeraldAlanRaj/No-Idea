@@ -54,14 +54,13 @@ exports.getFoodHistory = async (req, res) => {
 //Calculate the total calories and macros for the day
 exports.calculateDailyTotals = async (req, res) => {
   try {
-    const { userId } = req.query;
-    const today = dayjs().format('YYYY-MM-DD');
+    const { userId, date } = req.query;
 
-    if (!userId) {
-      return res.status(400).json({ error: 'Missing userId in query' });
+    if (!userId || !date) {
+      return res.status(400).json({ error: 'Missing userId or date in query' });
     }
 
-    const trackedFoods = await TrackedFood.find({ userId, date: today }).populate('foodId');
+    const trackedFoods = await TrackedFood.find({ userId, date }).populate('foodId');
 
     const total = trackedFoods.reduce((acc, tf) => {
       acc.calories += tf.calories;
