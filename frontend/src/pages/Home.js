@@ -10,6 +10,8 @@ const Home = () => {
   const userId = jwtDecoder.getUserIdFromToken();
   const [refreshTrigger, setRefreshTrigger] = useState(0);
 
+  
+
   const navigate = useNavigate();
       const addFood = async () => {
           navigate("/foodtracking");
