@@ -7,16 +7,17 @@ import FoodTracking from "./FoodTracking";
 import JWT_Decoder from "../components/JWT_Decoder";
 import CalorieVisualization from "../components/visualization/calorie_visualization";
 import MacrosVisualization from "../components/visualization/macros_visualization";
+import HomeImage from "../assets/home.jpg";
 
 const Home = () => {
   const [refreshTrigger, setRefreshTrigger] = useState(0);
   const userId = JWT_Decoder.getUserIdFromToken();
   const location = useLocation();
   const navigate = useNavigate();
-  const date = new Date().toISOString().split("T")[0];
+  const date = new Date().toLocaleDateString("en-CA"); // format: YYYY-MM-DD
 
   const triggerNutritionRefresh = () => {
-    setRefreshTrigger(prev => prev + 1);
+    setRefreshTrigger((prev) => prev + 1);
   };
 
   const handleAddFoodClick = () => {
@@ -28,28 +29,56 @@ const Home = () => {
   }
 
   return (
-    <div>
-      <Navbar triggerNutritionRefresh={triggerNutritionRefresh} />
+      <div className="Home-Container">
+        <div>
+          <Navbar triggerNutritionRefresh={triggerNutritionRefresh} />
+        </div>
+        <h1 className="title">
+            <span style={{ color: "white" }}>Today's</span>
+            <span style={{ color: "#454545" }}> Progress</span>
+        </h1>
+        <div className="home-body">
+        <div className="home-header">
+          <div className="left">
+            <div className="top">
+              <div className="top-left">
+                <CalorieVisualization
+                  userId={userId}
+                  date={date}
+                  refreshTrigger={refreshTrigger}
+                />
+              </div>
+              <div className="top-right">
+                <div className="add-food-button">
+                  <button
+                    onClick={handleAddFoodClick}
+                    className="Add-Food-Button"
+                    aria-label="Add food"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+              </div>
 
-      <div className="add-food-button">
-        <button onClick={handleAddFoodClick} className="Add-Food-Button">
-          +
-        </button>
-
-        <div className="visualization">
-          <div className="max-w-4xl mx-auto mt-10">
-            <CalorieVisualization userId={userId} date={date} refreshTrigger={refreshTrigger} />
+            <div className="bottom">
+              <MacrosVisualization
+                userId={userId}
+                date={date}
+                refreshTrigger={refreshTrigger}
+              />
+            </div>
           </div>
-          <div>
-            <MacrosVisualization userId={userId} date={date}refreshTrigger={refreshTrigger} />
+
+          <div className="right">
+            <img src={HomeImage} alt="home" />
           </div>
         </div>
-      </div>
-
-      <div className="food-history">
+        <div className="home-footer">
         <FoodHistory />
       </div>
-    </div>
+      </div>
+      </div>
   );
 };
 

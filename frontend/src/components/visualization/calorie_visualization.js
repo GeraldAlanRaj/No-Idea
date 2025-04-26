@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { PieChart, Pie, Cell, Legend } from 'recharts';
 import instance from '../../utils/axiosInterceptor';
+import '../../styles/components/visualization/CalorieVisualization.css';
 
-const calorieColors = ['#00C49F', '#FF8042'];
+const calorieColors = ['#D3D3D3', '#4B4B4B'];
 
 const CalorieVisualization = ({ userId, date, refreshTrigger }) => {
   const [required, setRequired] = useState(null);
@@ -32,14 +33,13 @@ const CalorieVisualization = ({ userId, date, refreshTrigger }) => {
   if (!required || !taken) return <p className="text-center mt-6">Loading nutrition data...</p>;
 
   const calorieData = [
-    { name: 'Taken', value: taken.calories || 0 },
-    { name: 'Remaining', value: Math.max((required.calories || 0) - (taken.calories || 0), 0) }
-  ];
+    { name: 'Taken', value: parseFloat((taken.calories || 0).toFixed(2)) },
+    { name: 'Remaining', value: parseFloat(Math.max((required.calories || 0) - (taken.calories || 0), 0).toFixed(2)) }
+  ];  
 
   return (
-    <div className="p-4 grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div className="flex flex-col items-center">
-        <h2 className="text-xl font-semibold mb-2">Calorie Intake</h2>
+    <div className="calorie-chart">
+      <div className="left-section">
         <PieChart width={250} height={250}>
           <Pie
             data={calorieData}
@@ -56,9 +56,11 @@ const CalorieVisualization = ({ userId, date, refreshTrigger }) => {
           </Pie>
           <Legend />
         </PieChart>
-        <p className="mt-2 text-center">
-          {taken.calories || 0} kcal taken of {required.calories || 0} kcal
-        </p>
+      </div>
+
+      <div className="right-section">
+      <p><strong>{(taken.calories || 0).toFixed(2)}</strong> kcal taken</p>
+      <p>of <strong>{(required.calories || 0).toFixed(2)}</strong> kcal required</p>
       </div>
     </div>
   );

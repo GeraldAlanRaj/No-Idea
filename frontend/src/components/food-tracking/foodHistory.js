@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import instance from '../../utils/axiosInterceptor';
 import JWT_Decoder from '../JWT_Decoder';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 
 function FoodHistory() {
-  const [date, setDate] = useState('');
+  const [date, setDate] = useState(new Date());
   const [history, setHistory] = useState([]);
 
-  const fetchHistory = async () => {
+  const fetchHistory = async (selectedDate) => {
     const userId = JWT_Decoder.getUserIdFromToken();
+    const formattedDate = selectedDate.toISOString().split('T')[0]; // Format date as YYYY-MM-DD
     try {
-      const res = await instance.get(`/foodtrack/history?userId=${userId}&date=${date}`);
+      const res = await instance.get(`/foodtrack/history?userId=${userId}&date=${formattedDate}`);
       setHistory(res.data);
     } catch (err) {
       console.error(err);
@@ -17,16 +20,22 @@ function FoodHistory() {
     }
   };
 
+  const handleDateChange = (newDate) => {
+    setDate(newDate);
+    fetchHistory(newDate); // Fetch history when the date is changed
+  };
+
   return (
     <div>
       <h2>View Food History</h2>
-      <input
-        type="date"
-        value={date}
-        onChange={e => setDate(e.target.value)}
-      />
-      <button onClick={fetchHistory}>Fetch</button>
 
+      {/* Display Calendar */}
+      <Calendar
+        onChange={handleDateChange}
+        value={date}
+      />
+
+      {/* Display history */}
       <ul>
         {history.map((item, idx) => (
           <li key={idx}>
