@@ -1,25 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { PieChart, Pie, Cell, Legend } from 'recharts';
-import instance from '../utils/axiosInterceptor';
-
+import instance from '../../utils/axiosInterceptor';
 
 const calorieColors = ['#00C49F', '#FF8042'];
-const macroColors = {
-  protein: '#8884d8',
-  carbs: '#82ca9d',
-  fat: '#ffc658',
-  fiber: '#ff7f50'
-};
 
-const CalorieVisualization = ({ userId, date, food }) => {
+const CalorieVisualization = ({ userId, date, foods, refreshTrigger }) => {
   const [required, setRequired] = useState(null);
   const [taken, setTaken] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const profileRes = await instance.get(`http://localhost:5001/api/profile/${userId}/details-with-calories`);
-        const takenRes = await instance.get(`http://localhost:5001/api/foodtrack/daily-totals?userId=${userId}&date=${date}`);
+        const profileRes = await instance.get(
+          `http://localhost:5001/api/profile/${userId}/details-with-calories`
+        );
+        const takenRes = await instance.get(
+          `http://localhost:5001/api/foodtrack/daily-totals?userId=${userId}&date=${date}`
+        );
         setRequired(profileRes.data.nutrition);
         setTaken(takenRes.data);
       } catch (err) {
@@ -30,18 +27,17 @@ const CalorieVisualization = ({ userId, date, food }) => {
     if (userId && date) {
       fetchData();
     }
-  }, [food]);
+  }, [userId, date, foods, refreshTrigger]);
 
   if (!required || !taken) return <p className="text-center mt-6">Loading nutrition data...</p>;
 
   const calorieData = [
-    { name: 'Required', value: required.calories },
-    { name: 'Taken', value: taken.calories },
+    { name: 'Taken', value: taken.calories || 0 },
+    { name: 'Remaining', value: Math.max((required.calories || 0) - (taken.calories || 0), 0) }
   ];
 
   return (
     <div className="p-4 grid grid-cols-1 md:grid-cols-2 gap-6">
-      {/* Donut Chart */}
       <div className="flex flex-col items-center">
         <h2 className="text-xl font-semibold mb-2">Calorie Intake</h2>
         <PieChart width={250} height={250}>
@@ -55,13 +51,13 @@ const CalorieVisualization = ({ userId, date, food }) => {
             dataKey="value"
           >
             {calorieData.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={calorieColors[index]} />
+              <Cell key={`cell-${index}`} fill={calorieColors[index % calorieColors.length]} />
             ))}
           </Pie>
           <Legend />
         </PieChart>
         <p className="mt-2 text-center">
-          {taken.calories} kcal taken of {required.calories} kcal
+          {taken.calories || 0} kcal taken of {required.calories || 0} kcal
         </p>
       </div>
     </div>

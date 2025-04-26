@@ -3,21 +3,17 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import SearchBar from "../components/SearchBar";
 import instance from "../utils/axiosInterceptor";
-import CalorieVisualization from "../visualisation/calorie_visulization";
-import MacrosVisualization from "../visualisation/macros_visualization";
-import jwtDecoder from "../components/JWT_Decoder";
 
-const FoodTracking = () => {
-  const [foods, setFoods] = useState([]);
+const FoodTracking = ({setFood, refreshTrigger, foods, userId, date}) => {
   const [search, setSearch] = useState("");
+  const [results, setResults] = useState([]);
   const navigate = useNavigate();
-  const userId = jwtDecoder.getUserIdFromToken();
-  const date = new Date().toISOString().split("T")[0]; 
+
 
   const handleSearch = async () => {
     try {
       const res = await instance.get(`/foods/search?name=${search}`);
-      setFoods(res.data);
+      setResults(res.data);
     } catch (error) {
       console.error("Error searching recipes:", error);
     }
@@ -26,23 +22,17 @@ const FoodTracking = () => {
   return (
     <div className="FoodTracking-Container">
       <Navbar />
-      <div className="max-w-4xl mx-auto mt-10">
-      <CalorieVisualization userId={userId} date={date} food={foods}/>
-    </div>
-    <div>
-      <MacrosVisualization userId={userId} date={date} food={foods}/>
-      </div>
       <div className="Search-Bar">
         <SearchBar search={search} setSearch={setSearch} handleSearch={handleSearch} />
       </div>
       <ul>
-        {foods.map((food) => (
+        {results.map((result) => (
           <li
-            key={food._id}
-            onClick={() => navigate(`/food/${food._id}`)}
+            key={result._id}
+            onClick={() => navigate(`/food/${result._id}`)}
             style={{ cursor: "pointer" }}
           >
-            {food.name}
+            {result.name}
           </li>
         ))}
       </ul>

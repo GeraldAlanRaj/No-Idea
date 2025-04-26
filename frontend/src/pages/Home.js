@@ -1,20 +1,21 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import CalorieMacroCalculator from "../components/Calorie-Macro_Calculator";
-import jwtDecoder from "../components/JWT_Decoder";
 import "../styles/pages/Home.css";
 import FoodHistory from "../components/food-tracking/foodHistory";
 import FoodTracking from "./FoodTracking";
+import JWT_Decoder from "../components/JWT_Decoder";
+import CalorieVisualization from "../components/visualization/calorie_visualization";
+import MacrosVisualization from "../components/visualization/macros_visualization";
+
 
 const Home = () => {
   const [foods, setFoods] = useState([]);
   const [refreshTrigger, setRefreshTrigger] = useState(0);
-  const userId = jwtDecoder.getUserIdFromToken();
+  const userId = JWT_Decoder.getUserIdFromToken();
   const location = useLocation();
   const navigate = useNavigate();
-
-  const today = new Date().toISOString().split("T")[0]; 
+  const date = new Date().toISOString().split("T")[0]; 
 
   const setFood = (data) => {
     setFoods(data);
@@ -30,18 +31,27 @@ const Home = () => {
 
   // Render FoodTracking if we're on that route
   if (location.pathname === "/foodtracking") {
-    return <FoodTracking setFood={setFood} />;
+    return <FoodTracking setFood={setFood} refreshTrigger={refreshTrigger} foods={foods} userId={userId} date={date}/>;
   }
 
   return (
     <div>
       <Navbar triggerNutritionRefresh={triggerNutritionRefresh} />
-      <CalorieMacroCalculator userId={userId} refreshTrigger={refreshTrigger} />
       
       <div className="add-food-button">
         <button onClick={handleAddFoodClick} className="Add-Food-Button">
           +
         </button>
+      
+      <div className="visualization">
+        <div className="max-w-4xl mx-auto mt-10">
+          <CalorieVisualization userId={userId} date={date} foods={foods} refreshTrigger={refreshTrigger} />
+        </div>
+        <div>
+          <MacrosVisualization userId={userId} date={date} foods={foods} refreshTrigger={refreshTrigger}/>
+        </div>
+      </div>
+
       </div>
 
       <div className="food-history">
