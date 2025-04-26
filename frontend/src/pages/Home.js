@@ -8,18 +8,12 @@ import JWT_Decoder from "../components/JWT_Decoder";
 import CalorieVisualization from "../components/visualization/calorie_visualization";
 import MacrosVisualization from "../components/visualization/macros_visualization";
 
-
 const Home = () => {
-  const [foods, setFoods] = useState([]);
   const [refreshTrigger, setRefreshTrigger] = useState(0);
   const userId = JWT_Decoder.getUserIdFromToken();
   const location = useLocation();
   const navigate = useNavigate();
-  const date = new Date().toISOString().split("T")[0]; 
-
-  const setFood = (data) => {
-    setFoods(data);
-  };
+  const date = new Date().toISOString().split("T")[0];
 
   const triggerNutritionRefresh = () => {
     setRefreshTrigger(prev => prev + 1);
@@ -29,29 +23,27 @@ const Home = () => {
     navigate("/foodtracking");
   };
 
-  // Render FoodTracking if we're on that route
   if (location.pathname === "/foodtracking") {
-    return <FoodTracking setFood={setFood} refreshTrigger={refreshTrigger} foods={foods} userId={userId} date={date}/>;
+    return <FoodTracking />;
   }
 
   return (
     <div>
       <Navbar triggerNutritionRefresh={triggerNutritionRefresh} />
-      
+
       <div className="add-food-button">
         <button onClick={handleAddFoodClick} className="Add-Food-Button">
           +
         </button>
-      
-      <div className="visualization">
-        <div className="max-w-4xl mx-auto mt-10">
-          <CalorieVisualization userId={userId} date={date} foods={foods} refreshTrigger={refreshTrigger} />
-        </div>
-        <div>
-          <MacrosVisualization userId={userId} date={date} foods={foods} refreshTrigger={refreshTrigger}/>
-        </div>
-      </div>
 
+        <div className="visualization">
+          <div className="max-w-4xl mx-auto mt-10">
+            <CalorieVisualization userId={userId} date={date} refreshTrigger={refreshTrigger} />
+          </div>
+          <div>
+            <MacrosVisualization userId={userId} date={date}refreshTrigger={refreshTrigger} />
+          </div>
+        </div>
       </div>
 
       <div className="food-history">

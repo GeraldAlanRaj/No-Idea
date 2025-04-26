@@ -4,7 +4,7 @@ import instance from '../../utils/axiosInterceptor';
 
 const calorieColors = ['#00C49F', '#FF8042'];
 
-const CalorieVisualization = ({ userId, date, foods, refreshTrigger }) => {
+const CalorieVisualization = ({ userId, date, refreshTrigger }) => {
   const [required, setRequired] = useState(null);
   const [taken, setTaken] = useState(null);
 
@@ -27,7 +27,7 @@ const CalorieVisualization = ({ userId, date, foods, refreshTrigger }) => {
     if (userId && date) {
       fetchData();
     }
-  }, [userId, date, foods, refreshTrigger]);
+  }, [userId, date, refreshTrigger]);
 
   if (!required || !taken) return <p className="text-center mt-6">Loading nutrition data...</p>;
 

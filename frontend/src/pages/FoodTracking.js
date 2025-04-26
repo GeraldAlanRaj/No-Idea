@@ -1,14 +1,15 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import SearchBar from "../components/SearchBar";
 import instance from "../utils/axiosInterceptor";
+import FoodDetail from "../components/food-tracking/foodDetails";
 
-const FoodTracking = ({setFood, refreshTrigger, foods, userId, date}) => {
+const FoodTracking = () => {
   const [search, setSearch] = useState("");
   const [results, setResults] = useState([]);
   const navigate = useNavigate();
-
+  const location = useLocation();
 
   const handleSearch = async () => {
     try {
@@ -18,6 +19,11 @@ const FoodTracking = ({setFood, refreshTrigger, foods, userId, date}) => {
       console.error("Error searching recipes:", error);
     }
   };
+
+  // Match dynamic food detail route
+  if (/^\/food\/[a-zA-Z0-9]+$/.test(location.pathname)) {
+    return <FoodDetail />;
+  }
 
   return (
     <div className="FoodTracking-Container">

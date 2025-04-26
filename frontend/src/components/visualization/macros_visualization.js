@@ -2,14 +2,7 @@ import { Legend, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } fro
 import React, { useEffect, useState } from 'react';
 import instance from '../../utils/axiosInterceptor'
   
-  const macroColors = {
-    protein: '#8884d8',
-    carbs: '#82ca9d',
-    fat: '#ffc658',
-    fiber: '#ff7f50'
-  };
-  
-  const MacrosVisualization = ({ userId, date, foods, refreshTrigger }) => {
+  const MacrosVisualization = ({ userId, date, refreshTrigger }) => {
     const [required, setRequired] = useState(null);
     const [taken, setTaken] = useState(null);
   
@@ -32,7 +25,7 @@ import instance from '../../utils/axiosInterceptor'
       if (userId && date) {
         fetchData();
       }
-    }, [userId, date, foods, refreshTrigger]);
+    }, [userId, date, refreshTrigger]);
   
     const getPercentage = (macro) => {
       if (!required || !taken) return 0;
