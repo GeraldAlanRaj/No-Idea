@@ -32,7 +32,7 @@ body {
   .home-header {
     display: flex;
     flex: 1;
-    gap: 20px;
+    gap: 1px;
     height: 100%;
     width: 100%;
     margin-left: 70px;
@@ -110,18 +110,20 @@ body {
   .right {
     flex: 0.8;
     display: flex;
-    align-items: flex-start; /* Keep it */
-    justify-content: center;
-    margin: 0; /* No margins */
-    padding: 0; /* No paddings */
+    align-items: flex-start; /* Keep it aligned to the top */
+    justify-content: center; /* Keep it centered horizontally */
+    margin-top: -50px; /* Adjust this value to move it upwards */
+    padding: 0;
 }
 
-  .right img {
+.right img {
     width: 100%;
-    max-width: 530px;
-    height: 750px;
+    max-width: 510px;
+    height: 720px;
     border-radius: 12px;
-  }
+    object-fit: fill; /* This ensures the image keeps its aspect ratio and fits within the container */
+}
+
   
   /* Footer section */
   .home-footer {
