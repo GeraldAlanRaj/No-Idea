@@ -9,7 +9,24 @@ exports.addFood = async (req, res) => {
     const food = await Food.findById(foodId);
     if (!food) return res.status(404).json({ error: 'Food not found' });
 
-    const multiplier = method === 'serving' ? quantity : quantity / 100;
+    let calories, protein, carbs, fat, fiber;
+
+    if (method === 'serving') {
+      // quantity = number of servings (1, 2, 3 servings etc.)
+      calories = food.perServing.calories * quantity;
+      protein = food.perServing.protein * quantity;
+      carbs = food.perServing.carbs * quantity;
+      fat = food.perServing.fat * quantity;
+      fiber = food.perServing.fiber * quantity;
+    } else if (method === '100g') {
+      // quantity = grams (e.g., 50g, 100g, etc.)
+      const factor = quantity / 100;  // because per100g is base
+      calories = food.per100g.calories * factor;
+      protein = food.per100g.protein * factor;
+      carbs = food.per100g.carbs * factor;
+      fat = food.per100g.fat * factor;
+      fiber = food.per100g.fiber * factor;
+    }
 
     const entry = {
       userId,
@@ -18,11 +35,11 @@ exports.addFood = async (req, res) => {
       method,
       mealType,
       date: dayjs().format('YYYY-MM-DD'),
-      calories: food.per100g.calories * multiplier,
-      protein: food.per100g.protein * multiplier,
-      carbs: food.per100g.carbs * multiplier,
-      fat: food.per100g.fat * multiplier,
-      fiber: food.per100g.fiber * multiplier,
+      calories,
+      protein,
+      carbs,
+      fat,
+      fiber,
     };
 
     await TrackedFood.create(entry);
