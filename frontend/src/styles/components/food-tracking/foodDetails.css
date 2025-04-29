@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.food-details-image {
+    width: 100%;
+    height: auto;
+    margin: 0 auto; /* Centers the div horizontally */
+    margin-bottom: 25px;
+}
+
+.food-details-image img {
+    width: 100%;
+    max-width: 10000px; /* Ensures it doesn’t exceed 800px */
+    height: auto;
+    max-height: 600px; /* Limits the height but allows resizing */
+    object-fit: contain; /* Prevents image distortion */
+    border-radius: 10px;
+}

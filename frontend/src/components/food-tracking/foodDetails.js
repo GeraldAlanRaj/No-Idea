@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import instance from '../../utils/axiosInterceptor';
 import JWT_Decoder from '../JWT_Decoder';
+import '../../styles/components/food-tracking/foodDetails.css';
 
 const FoodDetail = () => {
   const { id } = useParams();
@@ -37,12 +38,16 @@ const FoodDetail = () => {
 
   return (
     <div>
+      <div className="food-details-image">
+      <img src={`http://localhost:5001/uploads/${food.imageurl}`} alt={food.title} className="food-image" />
+    </div>
       <h2>{food.name}</h2>
       <p>Calories: {displayValues.calories}</p>
       <p>Protein: {displayValues.protein}</p>
       <p>Carbs: {displayValues.carbs}</p>
       <p>Fat: {displayValues.fat}</p>
       <p>Fiber: {displayValues.fiber}</p>
+      <p>Serving Size : {displayValues.servingSize} g</p>
 
       <label>Quantity:</label>
       <input
