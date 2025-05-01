@@ -9,7 +9,8 @@ function FoodHistory({ userId, refreshTrigger, setRefreshTrigger, history_date, 
   const [history, setHistory] = useState([]);
 
   const fetchHistory = useCallback(async (selectedDate) => {
-    const formattedDate = selectedDate.toISOString().split('T')[0]; // Format: YYYY-MM-DD
+    // Use local date formatting to avoid timezone issues
+    const formattedDate = selectedDate.toLocaleDateString('en-CA'); // Format: YYYY-MM-DD
     try {
       const res = await instance.get(
         `/foodtrack/history?userId=${userId}&date=${formattedDate}`
@@ -57,13 +58,13 @@ function FoodHistory({ userId, refreshTrigger, setRefreshTrigger, history_date, 
         <div>
           <CalorieVisualization
             userId={userId}
-            date={history_date.toISOString().split('T')[0]}
+            date={history_date.toLocaleDateString('en-CA')}
             refreshTrigger={refreshTrigger}
             history_date={history_date}
           />
           <MacrosVisualization
             userId={userId}
-            date={history_date.toISOString().split('T')[0]}
+            date={history_date.toLocaleDateString('en-CA')}
             refreshTrigger={refreshTrigger}
             history_date={history_date}
           />
