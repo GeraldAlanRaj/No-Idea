@@ -5,7 +5,7 @@ import '../../styles/components/visualization/CalorieVisualization.css';
 
 const calorieColors = ['#D3D3D3', '#4B4B4B'];
 
-const CalorieVisualization = ({ userId, date, refreshTrigger }) => {
+const CalorieVisualization = ({ userId, date, refreshTrigger, history_date }) => {
   const [required, setRequired] = useState(null);
   const [taken, setTaken] = useState(null);
 
@@ -28,14 +28,15 @@ const CalorieVisualization = ({ userId, date, refreshTrigger }) => {
     if (userId && date) {
       fetchData();
     }
-  }, [userId, date, refreshTrigger]);
+  }, [userId, date, refreshTrigger, history_date]);
 
-  if (!required || !taken) return <p className="text-center mt-6">Loading nutrition data...</p>;
+  if (!required || !taken)
+    return <p className="text-center mt-6">Loading nutrition data...</p>;
 
   const calorieData = [
     { name: 'Taken', value: parseFloat((taken.calories || 0).toFixed(2)) },
     { name: 'Remaining', value: parseFloat(Math.max((required.calories || 0) - (taken.calories || 0), 0).toFixed(2)) }
-  ];  
+  ];
 
   return (
     <div className="calorie-chart">
@@ -59,8 +60,8 @@ const CalorieVisualization = ({ userId, date, refreshTrigger }) => {
       </div>
 
       <div className="right-section">
-      <p><strong>{(taken.calories || 0).toFixed(2)}</strong> kcal taken</p>
-      <p>of <strong>{(required.calories || 0).toFixed(2)}</strong> kcal required</p>
+        <p><strong>{(taken.calories || 0).toFixed(2)}</strong> kcal taken</p>
+        <p>of <strong>{(required.calories || 0).toFixed(2)}</strong> kcal required</p>
       </div>
     </div>
   );

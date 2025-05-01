@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import instance from '../../utils/axiosInterceptor';
 import '../../styles/components/visualization/MacroVisualization.css';
 
-const MacrosVisualization = ({ userId, date, refreshTrigger }) => {
+const MacrosVisualization = ({ userId, date, refreshTrigger, history_date }) => {
   const [required, setRequired] = useState(null);
   const [taken, setTaken] = useState(null);
 
@@ -26,7 +26,7 @@ const MacrosVisualization = ({ userId, date, refreshTrigger }) => {
     if (userId && date) {
       fetchData();
     }
-  }, [userId, date, refreshTrigger]);
+  }, [userId, date, refreshTrigger, history_date]);
 
   const getPercentage = (macro) => {
     if (!required || !taken) return 0;
@@ -44,7 +44,7 @@ const MacrosVisualization = ({ userId, date, refreshTrigger }) => {
   return (
     <div className="calorie-chart">
       <div className="left-section">
-      <ResponsiveContainer width={450} height={300}>
+        <ResponsiveContainer width={450} height={300}>
           <BarChart
             data={[
               {
@@ -67,15 +67,15 @@ const MacrosVisualization = ({ userId, date, refreshTrigger }) => {
                 Required: parseFloat((required.macros.fiber || 0).toFixed(2)),
                 Taken: parseFloat((taken.fiber || 0).toFixed(2)),
               },
-            ]}            
+            ]}
             margin={{ top: 10, right: 30, left: 0, bottom: 10 }}
           >
             <XAxis dataKey="name" />
             <YAxis />
             <Tooltip formatter={(value) => `${value} g`} />
             <Legend />
-            <Bar dataKey="Required" fill= "#D3D3D3" />
-            <Bar dataKey="Taken" fill= "#4B4B4B" />
+            <Bar dataKey="Required" fill="#D3D3D3" />
+            <Bar dataKey="Taken" fill="#4B4B4B" />
           </BarChart>
         </ResponsiveContainer>
       </div>

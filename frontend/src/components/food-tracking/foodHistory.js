@@ -1,41 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import instance from '../../utils/axiosInterceptor';
-import JWT_Decoder from '../JWT_Decoder';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import CalorieVisualization from '../visualization/calorie_visualization';
+import MacrosVisualization from '../visualization/macros_visualization';
 
-function FoodHistory() {
-  const [date, setDate] = useState(new Date());
+function FoodHistory({ userId, refreshTrigger, setRefreshTrigger, history_date, setHistoryDate }) {
   const [history, setHistory] = useState([]);
 
-  const fetchHistory = async (selectedDate) => {
-    const userId = JWT_Decoder.getUserIdFromToken();
-    const formattedDate = selectedDate.toISOString().split('T')[0]; // Format date as YYYY-MM-DD
+  const fetchHistory = useCallback(async (selectedDate) => {
+    const formattedDate = selectedDate.toISOString().split('T')[0]; // Format: YYYY-MM-DD
     try {
-      const res = await instance.get(`/foodtrack/history?userId=${userId}&date=${formattedDate}`);
+      const res = await instance.get(
+        `/foodtrack/history?userId=${userId}&date=${formattedDate}`
+      );
       setHistory(res.data);
     } catch (err) {
       console.error(err);
       alert('Failed to fetch history');
     }
-  };
+  }, [userId]);
 
   const handleDateChange = (newDate) => {
-    setDate(newDate);
-    fetchHistory(newDate); // Fetch history when the date is changed
+    if (newDate instanceof Date && !isNaN(newDate)) {
+      setHistoryDate(newDate);        
+      fetchHistory(newDate);
+      setRefreshTrigger(prev => prev + 1); // Trigger the refresh
+    }
   };
+
+  useEffect(() => {
+    if (history_date) {
+      fetchHistory(history_date);
+    }
+  }, [history_date, fetchHistory]);
 
   return (
     <div>
       <h2>View Food History</h2>
 
-      {/* Display Calendar */}
       <Calendar
         onChange={handleDateChange}
-        value={date}
+        value={history_date}
       />
 
-      {/* Display history */}
       <ul>
         {history.map((item, idx) => (
           <li key={idx}>
@@ -43,6 +51,24 @@ function FoodHistory() {
           </li>
         ))}
       </ul>
+
+      {/* Visualizations for the selected date */}
+      {history_date && (
+        <div>
+          <CalorieVisualization
+            userId={userId}
+            date={history_date.toISOString().split('T')[0]}
+            refreshTrigger={refreshTrigger}
+            history_date={history_date}
+          />
+          <MacrosVisualization
+            userId={userId}
+            date={history_date.toISOString().split('T')[0]}
+            refreshTrigger={refreshTrigger}
+            history_date={history_date}
+          />
+        </div>
+      )}
     </div>
   );
 }
