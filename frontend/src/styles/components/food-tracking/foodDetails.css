@@ -4,20 +4,111 @@ body {
     background-color: black;
     color: white;
     font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Ensure it stays above other elements */
+}
+
+.Food-Details-Container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-height: 100vh;
+}
+
+.Food-Details-Header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; /* Aligns items naturally */
+    margin-top: 30px;
+    width: 800px;
+    margin: 0 auto; /* Centers the header */
+    border-radius: 8px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 25px rgba(255, 255, 255, 0.5);
+    border: white 1px solid;
 }
 
 .food-details-image {
-    width: 100%;
-    height: auto;
-    margin: 0 auto; /* Centers the div horizontally */
-    margin-bottom: 25px;
+    flex: 1;
+    max-width: 50%;
+    margin-left: 0; /* Removed large left margin */
 }
 
 .food-details-image img {
+    width: 100%; /* Use 100% width to make the image responsive */
+    height: 400px;
+    border-radius: 8px;
+    margin-left: 11px;
+    margin-top: 11px;
+}
+
+.Food-Details-Info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-right: 0; /* Removed large right margin */
+}
+
+.Food-Details-Info h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.Food-Details-Info p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+.Food-Details-Form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 50px;
+    width: 500px;
+    margin: 0 auto;
+    align-items: center; /* Centers the form content horizontally */
+}
+
+.Food-Details-Form .form-group {
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    max-width: 10000px; /* Ensures it doesn’t exceed 800px */
-    height: auto;
-    max-height: 600px; /* Limits the height but allows resizing */
-    object-fit: contain; /* Prevents image distortion */
-    border-radius: 10px;
+}
+
+.Food-Details-Form label {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    align-self: flex-start; /* Align label to the left (start) */
+}
+
+.Food-Details-Form input,
+.Food-Details-Form select,
+.Food-Details-Form button {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 100%; /* Make input/select 100% width */
+}
+
+.Food-Details-Form button {
+    margin-top: 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.Food-Details-Form button:hover {
+    background-color: #45a049;
 }

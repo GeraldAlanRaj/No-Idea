@@ -1,0 +1,111 @@
+.Food-History-Title {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* Container for calendar + list + chart area */
+.Food-History-Container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Left Panel (Calendar + History List) */
+.Food-History-Container .history-left {
+  width: 35%;
+  min-width: 250px;
+  background-color: #1a1a1a;
+  padding: 1rem;
+  border-radius: 8px;
+  color: white;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Right Panel (Charts) */
+.Food-History-Container .history-right {
+  flex: 1;
+  padding: 1rem;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  border: white 1px solid;
+  border-radius: 8px;
+  box-sizing: border-box;
+  background-color: #101010;
+  color: #ccc;
+}
+
+/* Calendar Styles */
+.Food-History-Container .history-left .react-calendar {
+  width: 100%;
+  background-color: #000;
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  font-size: 1.1rem;
+  box-sizing: border-box;
+}
+
+/* Calendar Tiles */
+.Food-History-Container .history-left .react-calendar__tile {
+  background: transparent;
+  color: white;
+  padding: 1rem 0.5rem;
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* Active Date */
+.Food-History-Container .history-left .react-calendar__tile--active {
+  background: #333;
+  color: white;
+}
+
+/* Calendar Navigation */
+.Food-History-Container .history-left .react-calendar__navigation button {
+  background: transparent;
+  color: white;
+}
+
+/* Scrollable History List */
+.Food-History-Container .history-left .history-list {
+  margin-top: 1rem;
+  overflow-y: auto;
+  max-height: 250px;
+  padding-right: 0.5rem;
+}
+
+/* History List Styling */
+.Food-History-Container .history-left ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.Food-History-Container .history-left li {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  border-bottom: 1px solid #333;
+  padding-bottom: 0.4rem;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .Food-History-Container {
+    flex-direction: column;
+  }
+
+  .Food-History-Container .history-left,
+  .Food-History-Container .history-right {
+    width: 100%;
+  }
+}

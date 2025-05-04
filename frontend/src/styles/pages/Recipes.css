@@ -1,4 +1,10 @@
 /* General Styling */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Ensure it stays above other elements */
+  }
+
 body {
     margin: 0;
     padding: 0;

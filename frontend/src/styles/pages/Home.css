@@ -1,4 +1,10 @@
 /* Home.css */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Ensure it stays above other elements */
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -36,6 +42,7 @@ body {
   height: 100%;
   width: 100%;
   margin-left: 70px;
+  margin-bottom: 120px;
 }
 
 /* Left side of header: stacked top and bottom */
@@ -141,6 +148,7 @@ body {
 
 /* Footer section */
 .home-footer {
+  padding: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
