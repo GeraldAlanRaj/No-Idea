@@ -16,7 +16,7 @@ const About = (token) => {
 
     return (
         <div className="About-Container">
-        <div className="Navbar">
+        <div className="navbar">
             <Navbar />
         </div>
         <div className="About-Body">

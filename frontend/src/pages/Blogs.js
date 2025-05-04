@@ -49,7 +49,9 @@ const Blogs = () => {
 
   return (
     <div className="Blogs-Container">
+      <div className="navbar">
       <Navbar />
+      </div>
       <div className="Blogs">
         <div className="Title">
           <h1>

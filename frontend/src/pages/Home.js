@@ -11,7 +11,7 @@ import HomeImage from "../assets/home.jpg";
 
 const Home = () => {
   const [refreshTrigger, setRefreshTrigger] = useState(0);
-  const [historyDate, setHistoryDate] = useState(null);
+  const [historyDate, setHistoryDate] = useState(new Date());
   const userId = JWT_Decoder.getUserIdFromToken();
   const location = useLocation();
   const navigate = useNavigate();
@@ -35,7 +35,9 @@ const Home = () => {
 
   return (
     <div className="Home-Container">
+      <div className="navbar">
       <Navbar triggerNutritionRefresh={triggerNutritionRefresh} />
+      </div>
       <h1 className="title">
         <span style={{ color: "white" }}>Today's</span>
         <span style={{ color: "#454545" }}> Progress</span>

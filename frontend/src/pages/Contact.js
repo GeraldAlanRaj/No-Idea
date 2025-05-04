@@ -8,7 +8,7 @@ import "../styles/pages/Contact.css"
 const Contact = () => { 
   return (
     <div className="Contact-Container">
-      <div className="Navbar">
+      <div className="navbar">
         <Navbar />
       </div>
 

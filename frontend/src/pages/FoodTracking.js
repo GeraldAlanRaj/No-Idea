@@ -27,7 +27,9 @@ const FoodTracking = () => {
 
   return (
     <div className="food-tracking-container">
+      <div className="navbar">
       <Navbar />
+      </div>
       <h1 className="food-tracking-title">
         <span style={{ color: "white" }}>Search by</span>
         <span style={{ color: "#454545" }}> Food Name</span>
