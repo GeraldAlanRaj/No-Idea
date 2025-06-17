@@ -1,31 +1,56 @@
-  .food-tracking-title{
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 50px;
-    font-weight: bold;
-  }
-  
-  .search-bar {
-    margin-bottom: 20px;
-  }
-  
-  .no-results {
-    color: #999;
-    font-style: italic;
-    text-align: center; /* This centers the text horizontally */
-    white-space: nowrap; /* Prevents the text from wrapping onto multiple lines */
-    margin: 0 auto; /* Centers the paragraph horizontally */
-    margin-left: 620px;
-  }
-  
-  
-  
+.food-tracking-title {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.search-bar {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.no-results {
+  color: #999;
+  font-style: italic;
+  text-align: center;
+  margin: 20px auto;
+  white-space: nowrap;
+}
+
+/* Grid for results list */
+.results-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+  padding: 0 110px;
+  margin-top: 40px;
+}
+
+/* Responsive breakpoints */
+
+/* For tablets and medium screens */
+@media (max-width: 1200px) {
   .results-list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 50px;
-    margin-left: 110px;
-    margin-right: 110px;
-    margin-top: 40px;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 60px;
   }
-  
+}
+
+/* For mobile screens */
+@media (max-width: 768px) {
+  .food-tracking-title {
+    font-size: 32px;
+  }
+
+  .results-list {
+    grid-template-columns: 1fr;
+    padding: 0 20px;
+    gap: 30px;
+  }
+
+  .no-results {
+    white-space: normal;
+    margin: 20px auto;
+  }
+}

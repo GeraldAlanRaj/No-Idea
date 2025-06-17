@@ -1,19 +1,24 @@
 /* Signup.css */
 
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
 .Signup {
   display: flex;
   width: 100vw;
   height: 100vh;
   background-color: #000;
-  color: white;
-  margin: 0;
-  padding: 0;
   overflow: hidden;
 }
 
 /* Form Section */
 .Signup_Form_Section {
-  width: calc(100vw - 770px); /* Adjusted width to move image left */
+  flex: 1;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -23,7 +28,7 @@
 /* Form Styling */
 .Signup_Form {
   width: 350px;
-  height: 550px;
+  max-width: 90%;
   padding: 40px;
   background: black;
   border-radius: 20px;
@@ -34,16 +39,18 @@
   align-items: center;
   text-align: center;
   box-shadow: 0px 0px 25px rgba(255, 255, 255, 0.5);
-  margin-left:125px;
-  margin-top: 30px;
+  margin: 30px 20px;
 }
 
 .Signup_Form h2 {
   color: white;
+  font-size: 2em;
+  margin-bottom: 10px;
 }
 
 .Signup_Form p {
   color: #bbb;
+  font-size: 0.9em;
 }
 
 .Signup_Form input {
@@ -60,7 +67,7 @@
   color: #aaa;
 }
 
-/* Sign Up Button (Red) */
+/* Buttons */
 .Signup_Form button {
   width: 100%;
   padding: 10px;
@@ -71,7 +78,6 @@
   cursor: pointer;
 }
 
-/* Specific Styling for Sign Up */
 .Signup_Form button:first-of-type {
   background-color: #ff0000;
   color: white;
@@ -81,7 +87,7 @@
   background-color: #cc0000;
 }
 
-/* Google Button (Blue) */
+/* Google Button */
 .Google_Button {
   background-color: #4285F4;
   color: white;
@@ -100,54 +106,69 @@
   border-color: #ddd;
 }
 
-/* Image on the right */
+/* Image Section */
 .Signup_Image {
   width: 550px;
+  max-width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 30px;
-  margin-right: 80px;
 }
 
 .Signup_Image img {
-  width: 737px;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 0;
 }
 
 /* Responsive Design */
-@media (max-width: 1400px) {
+
+/* For screens <= 1200px (medium devices, tablets) */
+@media (max-width: 1200px) {
   .Signup {
     flex-direction: column;
-    align-items: center;
+    height: auto;
   }
 
   .Signup_Form_Section {
     width: 100%;
     height: auto;
-    padding: 20px;
-  }
-
-  .Signup_Form {
-    width: 90%;
-    max-width: 453px;
-    height: auto;
+    padding: 40px 20px;
   }
 
   .Signup_Image {
     width: 100%;
     height: auto;
+    padding: 20px 0;
   }
 
   .Signup_Image img {
-    width: 100%;
     height: auto;
+    max-height: 400px;
+    object-fit: contain;
   }
 }
 
+/* For screens <= 768px (small devices, mobiles) */
+@media (max-width: 768px) {
+  .Signup_Form {
+    padding: 30px 20px;
+    width: 90%;
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.3);
+  }
+
+  .Signup_Form h2 {
+    font-size: 1.5em;
+  }
+
+  .Signup_Image img {
+    max-height: 250px;
+  }
+}
+
+/* Logo */
 .Logo {
   width: 100%;
   height: auto;

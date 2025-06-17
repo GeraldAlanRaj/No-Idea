@@ -10,9 +10,8 @@ body {
 .navbar {
     position: sticky;
     top: 0;
-    z-index: 1000; /* Ensure it stays above other elements */
-  }
-  
+    z-index: 1000;
+}
 
 .Blogs::-webkit-scrollbar {
     display: none;
@@ -21,25 +20,31 @@ body {
 .Blogs-Container {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
     overflow: hidden;
 }
-
 
 .Blogs {
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 60px);
+    flex: 1;
     overflow-y: auto;
-    padding-bottom: 40px;
+    padding: 20px;
 }
-  
-  .Title {
+
+.Title {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 2em;
-  }
-  
-  
+    font-size: 2.5em;
+    margin: 20px 0;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .Title {
+        font-size: 2em;
+    }
+}

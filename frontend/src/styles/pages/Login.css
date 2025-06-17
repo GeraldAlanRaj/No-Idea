@@ -1,29 +1,29 @@
-/* Login.css */
-
+/* Main container */
 .Login {
   display: flex;
-  width: 100vw; /* Full viewport width */
-  height: 100vh; /* Full viewport height */
-  background-color: #000; /* Black background */
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
   color: white;
   margin: 0;
   padding: 0;
-  overflow: hidden; /* Prevents unwanted scroll */
+  overflow: hidden;
+  flex-wrap: wrap; /* allow wrapping on smaller screens */
 }
 
 /* Form Section */
 .Login_Form_Section {
-  width: calc(100vw - 737px); /* Form takes the remaining space */
-  height: 100vh; /* Full height */
+  flex: 1 1 450px; /* flexible, but minimum width of 450px */
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px;
 }
 
 /* Form Styling */
 .Login_Form {
-  width: 350px;
-  height: 470px;
+  width: 100%;
+  max-width: 350px;
   padding: 40px;
   background: black;
   border-radius: 20px;
@@ -41,7 +41,7 @@
 }
 
 .Login_Form p {
-  color: #bbb; /* Light grey for description */
+  color: #bbb;
 }
 
 .Login_Form input {
@@ -50,15 +50,14 @@
   margin: 10px 0;
   border: 1px solid #555;
   border-radius: 5px;
-  background: #333; /* Darker input background */
+  background: #333;
   color: white;
 }
 
 .Login_Form input::placeholder {
-  color: #aaa; /* Light grey placeholder */
+  color: #aaa;
 }
 
-/* Sign In Button (Red) */
 .Login_Form button {
   width: 100%;
   padding: 10px;
@@ -69,22 +68,20 @@
   cursor: pointer;
 }
 
-/* Specific Styling for Sign In */
 .Login_Form button:first-of-type {
-  background-color: #ff0000; /* Red */
+  background-color: #ff0000;
   color: white;
 }
 
 .Login_Form button:first-of-type:hover {
-  background-color: #cc0000; /* Darker red */
+  background-color: #cc0000;
 }
 
-/* Google Button (Black with White Border) */
 .Google_button {
-  background-color: #4285F4; /* Dark gray background */
-  color: white; /* White text */
-  border: 2px solid white; /* White border */
-  padding: 12px; /* Adequate padding */
+  background-color: #4285F4;
+  color: white;
+  border: 2px solid white;
+  padding: 12px;
   font-size: 16px;
   width: 100%;
   cursor: pointer;
@@ -94,11 +91,10 @@
 }
 
 .Google_button:hover {
-  background-color: #666; /* Lighter gray on hover */
-  border-color: #ddd; /* Light gray border on hover */
+  background-color: #666;
+  border-color: #ddd;
 }
 
-/* Link Styling */
 .Login_Form a {
   display: block;
   text-align: center;
@@ -111,54 +107,68 @@
   text-decoration: underline;
 }
 
-/* Image on the right with exact size */
+.Logo {
+  width: 150px;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+/* Image Section */
 .Login_Image {
-  width: 737px;
-  height: 100vh;
+  flex: 1 1 450px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .Login_Image img {
-  width: 737px;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 0;
 }
 
 /* Responsive Design */
-@media (max-width: 1400px) { /* Adjust for smaller screens */
+
+/* For medium screens - tablets */
+@media (max-width: 1000px) {
   .Login {
     flex-direction: column;
-    align-items: center;
-  }
-
-  .Login_Form_Section {
-    width: 100%;
-    height: auto;
-    padding: 20px;
-  }
-
-  .Login_Form {
-    width: 90%;
-    max-width: 453px;
-    height: auto;
   }
 
   .Login_Image {
     width: 100%;
-    height: auto;
+    height: 300px;
   }
 
   .Login_Image img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
   }
 }
 
-.Logo {
-  width: 100%;
-  height: 100%;
-  margin-bottom: 15px;
+/* For small screens - mobiles */
+@media (max-width: 600px) {
+  .Login_Form {
+    padding: 20px;
+  }
+
+  .Login_Form input,
+  .Login_Form button,
+  .Google_button {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .Login_Form a {
+    font-size: 14px;
+  }
+
+  .Logo {
+    width: 120px;
+  }
+
+  .Login_Image {
+    height: 200px;
+  }
 }
