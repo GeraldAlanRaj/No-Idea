@@ -44,7 +44,7 @@ const FoodDetail = () => {
       </div>
       <div className='Food-Details-Header'>
         <div className="food-details-image">
-          <img src={`http://localhost:5001/uploads/${food.imageurl}`} alt={food.title} className="food-image" />
+          <img src={`${process.env.REACT_APP_API_URL}/uploads/${food.imageurl}`} alt={food.title} className="food-image" />
         </div>
         <div className='Food-Details-Info'>
           <h2>{food.name}</h2>

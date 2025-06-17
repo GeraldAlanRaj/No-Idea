@@ -27,10 +27,10 @@ const MailForm = () => {
 
     emailjs
       .send(
-        "service_s3gcj45", // Replace with your EmailJS service ID
-        "template_e5yc2hp", // Replace with your EmailJS template ID
+        process.env.REACT_APP_MAIL_JS_SERVICE_ID, // Replace with your EmailJS service ID
+        process.env.REACT_APP_MAIL_JS_TEMPLATE_ID, // Replace with your EmailJS template ID
         templateParams,
-        "O3JgIWvZMG8Ba9m6L" // Replace with your EmailJS user/public key
+        process.env.REACT_APP_MAIL_JS_SPUBLIC_KEY // Replace with your EmailJS user/public key
       )
       .then(
         (response) => {

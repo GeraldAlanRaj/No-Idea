@@ -17,7 +17,7 @@ const Details = ({ onProfileUpdate }) => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await instance.get(`http://localhost:5001/api/profile/${userId}`);
+        const res = await instance.get(`/profile/${userId}`);
         if (res.status === 200) {
           const userProfile = res.data;
           setAge(userProfile.age || "");
@@ -42,7 +42,7 @@ const Details = ({ onProfileUpdate }) => {
     }
 
     try {
-      const res = await instance.put(`http://localhost:5001/api/profile/update/${userId}`, {
+      const res = await instance.put(`/profile/update/${userId}`, {
         age: Number(age),
         height: Number(height),
         weight: Number(weight),

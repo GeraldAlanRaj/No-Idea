@@ -8,7 +8,7 @@ const useCalorieMacroData = (userId, refreshTrigger) => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await instance.get(`http://localhost:5001/api/profile/${userId}/details-with-calories`);
+        const res = await instance.get(`/profile/${userId}/details-with-calories`);
         setNutritionData(res.data);
       } catch (err) {
         console.error("Error fetching nutrition data:", err);

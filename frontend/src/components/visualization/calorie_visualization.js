@@ -13,10 +13,10 @@ const CalorieVisualization = ({ userId, date, refreshTrigger, history_date }) =>
     const fetchData = async () => {
       try {
         const profileRes = await instance.get(
-          `http://localhost:5001/api/profile/${userId}/details-with-calories`
+          `/profile/${userId}/details-with-calories`
         );
         const takenRes = await instance.get(
-          `http://localhost:5001/api/foodtrack/daily-totals?userId=${userId}&date=${date}`
+          `/foodtrack/daily-totals?userId=${userId}&date=${date}`
         );
         setRequired(profileRes.data.nutrition);
         setTaken(takenRes.data);

@@ -12,7 +12,7 @@ const FoodCard = ({ food }) => {
     <div className="food-card" onClick={handleCardClick} style={{ cursor: "pointer" }}>
       <h3 className="food-name">{food.name}</h3>
       <img
-        src={`http://localhost:5001/uploads/${food.imageurl}`}
+        src={`${process.env.REACT_APP_API_URL}/uploads/${food.imageurl}`}
         alt={food.name}
         className="food-image"
       />

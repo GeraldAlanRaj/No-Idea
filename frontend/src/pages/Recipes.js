@@ -14,7 +14,7 @@ const Recipes = () => {
   useEffect(() => {
     const fetchTopRecipes = async () => {
       try {
-        const res = await instance.get("http://localhost:5001/api/recipes");
+        const res = await instance.get("/recipes");
         setRecipes(res.data);
       } catch (error) {
         console.error("Error fetching top recipes:", error);
@@ -26,7 +26,7 @@ const Recipes = () => {
 
   const handleLike = async (id) => {
     try {
-      const res = await instance.put(`http://localhost:5001/api/recipes/${id}/like`);
+      const res = await instance.put(`/recipes/${id}/like`);
       if (res.status === 200) {
         const updatedRecipe = res.data;
         setRecipes((prevRecipes) =>
@@ -40,7 +40,7 @@ const Recipes = () => {
 
   const handleSearch = async () => {
     try {
-      const res = await instance.get(`http://localhost:5001/api/recipes?search=${search}`);
+      const res = await instance.get(`/recipes?search=${search}`);
       setRecipes(res.data);
     } catch (error) {
       console.error("Error searching recipes:", error);

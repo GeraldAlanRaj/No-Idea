@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import instance from "../utils/axiosInterceptor";
 import { Link, useNavigate } from "react-router-dom";
 import loginImage from "../assets/login-page-image.jpg";
 import logoImage from "../assets/Logo.png";
@@ -13,7 +13,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const res = await axios.post("http://localhost:5001/api/auth/login", { email, password });
+      const res = await instance.post("/auth/login", { email, password });
       localStorage.setItem("token", res.data.token);
       navigate("/home");
     } catch (err) {
