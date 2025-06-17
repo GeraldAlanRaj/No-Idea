@@ -10,12 +10,10 @@
 .navbar {
     position: sticky;
     top: 0;
-    z-index: 1000; /* Ensure it stays above other elements */
-  }
-  
+    z-index: 1000;
+}
 
 .Contact-Body {
-    margin-top: 2px;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -33,7 +31,7 @@
     font-size: 3.5em;
 }
 
-.Header h2{
+.Header h2 {
     font-weight: 200;
 }
 
@@ -46,10 +44,10 @@
     align-items: center;
     background-color: black;
     width: 70%;
-    margin-left: 265px;
+    margin: 0 auto; /* center it horizontally */
 }
 
-.Middle h2{
+.Middle h2 {
     font-weight: 400;
 }
 
@@ -61,18 +59,57 @@
     background: black;
     border-radius: 8px;
     color: white;
-    font-weight: lighter; /* Reduced font weight */
+    font-weight: lighter;
 }
 
 .Middle img {
-    width: 65px;  /* Reduced image size */
-    height: auto; /* Maintain aspect ratio */
+    width: 65px;
+    height: auto;
     margin-bottom: 35px;
-    margin-top: 10px; ;
+    margin-top: 10px;
 }
 
 .Footer {
     padding: 10px;
     background-color: black;
     text-align: center;
+}
+
+/* Responsive Design */
+
+/* For tablets */
+@media (max-width: 900px) {
+    .Middle {
+        grid-template-columns: repeat(2, 1fr);
+        width: 90%;
+    }
+
+    .Header h1 {
+        font-size: 2.5em;
+    }
+}
+
+/* For mobile screens */
+@media (max-width: 600px) {
+    .Middle {
+        grid-template-columns: 1fr;
+        width: 90%;
+    }
+
+    .Header h1 {
+        font-size: 2em;
+    }
+
+    .Header h2 {
+        font-size: 1.2em;
+    }
+
+    .Middle img {
+        width: 50px;
+        margin-bottom: 25px;
+    }
+
+    .Mail_Id, .Phone_No, .Location {
+        padding: 15px;
+    }
 }

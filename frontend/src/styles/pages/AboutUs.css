@@ -10,9 +10,8 @@ body {
 .navbar {
     position: sticky;
     top: 0;
-    z-index: 1000; /* Ensure it stays above other elements */
-  }
-  
+    z-index: 1000;
+}
 
 .About-Body::-webkit-scrollbar {
     display: none;
@@ -24,7 +23,6 @@ body {
     height: 100vh;
     overflow: hidden;
 }
-
 
 .About-Body {
     display: flex;
@@ -44,6 +42,7 @@ body {
     margin-top: 50px;
     margin-left: 150px;
     margin-bottom: 30px;
+    flex-wrap: wrap;
 }
 
 .About-Text {
@@ -57,15 +56,14 @@ body {
 }
 
 .About-Text h2 {
-    margin: 0 0 10px 0;
-    margin-top: 10px;
+    margin: 10px 0;
     line-height: 1.3;
 }
 
 .About-Text button {
     font-weight: bold;
+    font-size: medium;
     margin-top: 30px;
-    margin-left: 200px;
     padding: 10px 20px;
     background-color: grey;
     color: white;
@@ -75,6 +73,9 @@ body {
     border-radius: 20px;
     height: 45px;
     width: 180px;
+    display: block;  
+    margin-left: auto; 
+    margin-right: auto; 
 }
 
 .About-Text button:hover {
@@ -100,34 +101,33 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-left: 50px;
-    padding-right: 50px;
-    padding-bottom: 0px; /* Reduced padding */
-    padding-top: 20px; /* Reduced padding */
-    margin-top: 60px; /* Reduced margin */
+    padding: 20px 50px;
+    margin-top: 60px;
 }
 
 .About-Foot-Text h1 {
-    margin-left: 105px;
-    margin-right: 50px;
-    margin-bottom: 30px; /* Reduced margin */
-    font-size: 2.5em; /* Slightly smaller font */
+    margin: 0 50px 30px 50px;
+    font-size: 2.5em;
+    text-align: center;
 }
 
 .About-Foot-Text h2 {
-    margin-bottom: 40px; /* Reduced margin */
-    line-height: 1.5; /* Adjusted for better fit */
-    margin-left: 105px;
-    margin-right: 50px;
+    margin-bottom: 40px;
+    line-height: 1.5;
+    margin: 0 50px;
+    text-align: center;
 }
 
-
+/* Teammates Grid */
 .Teammate {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .Teammate img {
@@ -136,21 +136,57 @@ body {
     border-radius: 10px;
 }
 
+/* Responsive Design */
+
+/* For medium screens: tablets, small laptops */
 @media (max-width: 1024px) {
     .About-Content-1 {
         flex-direction: column;
+        margin-left: 0;
         text-align: center;
+        padding: 20px;
     }
-    .About-Image img {
-        width: 100%;
+
+    .About-Text {
+        padding-right: 0;
     }
+
+    .About-Text button {
+        margin-left: 0;
+    }
+
     .Teammate {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .About-Image img {
+        width: 90%;
+    }
 }
 
-@media (max-width: 768px) {
+/* For smaller screens: mobiles */
+@media (max-width: 600px) {
+    .About-Text h1 {
+        font-size: 2em;
+    }
+
+    .About-Text h2 {
+        font-size: 1.1em;
+    }
+
+    .About-Foot-Text h1 {
+        font-size: 1.8em;
+    }
+
+    .About-Foot-Text h2 {
+        font-size: 1em;
+    }
+
     .Teammate {
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: 1fr;
+    }
+
+    .About-Image img {
+        width: 100%;
     }
 }
