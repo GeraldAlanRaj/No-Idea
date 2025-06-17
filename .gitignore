@@ -1,6 +1,5 @@
 .DS_Store
 .env
-backend/public/uploads
 backend/food_dataset
 frontend/src/assets
 frontend/README.md

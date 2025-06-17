@@ -11,7 +11,7 @@ const RecipeDetails = () => {
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
-        const res = await instance.get(`http://localhost:5001/api/recipes/${id}`);
+        const res = await instance.get(`/recipes/${id}`);
         setRecipe(res.data);
       } catch (error) {
         console.error("Error fetching recipe:", error);
@@ -33,7 +33,7 @@ const RecipeDetails = () => {
       <h2>{recipe.title}</h2>
     </div>
     <div className="recipe-details-image">
-      <img src={`http://localhost:5001/uploads/${recipe.imageUrl}`} alt={recipe.title} className="recipe-image" />
+      <img src={`${process.env.REACT_APP_API_URL}/uploads/${recipe.imageUrl}`} alt={recipe.title} className="recipe-image" />
     </div>
     <div className="recipe-content">
       <pre>{recipe.content}</pre>

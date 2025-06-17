@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import instance from "../utils/axiosInterceptor";
 import { useNavigate } from "react-router-dom";
 import "../styles/pages/SignUp.css"
 import SignUpImage from "../assets/signup-page-image.jpg";
@@ -35,7 +35,7 @@ const Signup = () => {
     if (!validate()) return;
     
     try {
-      await axios.post("http://localhost:5001/api/auth/signup", { username, email, phone, password });
+      await instance.post("/auth/signup", { username, email, phone, password });
       navigate("/login");
     } catch (err) {
       alert("Error signing up");

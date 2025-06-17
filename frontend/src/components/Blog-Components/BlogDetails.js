@@ -11,7 +11,7 @@ const BlogDetails = () => {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const res = await instance.get(`http://localhost:5001/api/blogs/${id}`);
+        const res = await instance.get(`/blogs/${id}`);
         setBlog(res.data);
       } catch (error) {
         console.error("Error fetching blog:", error);
@@ -33,7 +33,7 @@ const BlogDetails = () => {
       <h2>{blog.title}</h2>
     </div>
     <div className="blog-details-image">
-      <img src={`http://localhost:5001/uploads/${blog.imageUrl}`} alt={blog.title} className="blog-image" />
+      <img src={`${process.env.REACT_APP_API_URL}/uploads/${blog.imageUrl}`} alt={blog.title} className="blog-image" />
     </div>
     <div className="blog-content">
       <pre>{blog.content}</pre>

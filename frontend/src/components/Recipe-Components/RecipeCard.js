@@ -20,7 +20,7 @@ const RecipeCard = ({ recipe, onLike }) => {
     <div className="recipe-card" onClick={handleCardClick} style={{ cursor: "pointer" }}>
       <h3 className="recipe-title">{recipe.title}</h3>
       <img
-        src={`http://localhost:5001/uploads/${recipe.imageUrl}`}
+        src={`${process.env.REACT_APP_API_URL}/uploads/${recipe.imageUrl}`}
         alt={recipe.title}
         className="recipe-image"
       />

@@ -14,7 +14,7 @@ const Blogs = () => {
   useEffect(() => {
     const fetchTopBlogs = async () => {
       try {
-        const res = await instance.get("http://localhost:5001/api/blogs");
+        const res = await instance.get("/blogs");
         setBlogs(res.data);
       } catch (error) {
         console.error("Error fetching top blogs:", error);
@@ -26,7 +26,7 @@ const Blogs = () => {
 
   const handleLike = async (id) => {
     try {
-      const res = await instance.put(`http://localhost:5001/api/blogs/${id}/like`);
+      const res = await instance.put(`/blogs/${id}/like`);
       if (res.status === 200) {
         const updatedBlog = res.data;
         setBlogs((prevBlogs) =>
@@ -40,7 +40,7 @@ const Blogs = () => {
 
   const handleSearch = async () => {
     try {
-      const res = await instance.get(`http://localhost:5001/api/blogs/search?q=${search}`);
+      const res = await instance.get(`/blogs/search?q=${search}`);
       setBlogs(res.data);
     } catch (error) {
       console.error("Error searching blogs:", error);
